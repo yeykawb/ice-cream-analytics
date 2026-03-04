@@ -1,0 +1,52 @@
+[
+    {
+        "id": "B001",
+        "date": "2025-11-08",
+        "recipe": "vanilla_base",
+        "recipe_label": "Vanilla Base",
+        "version": 1,
+        "yield_g": 806,
+        "churn_min": 30,
+        "serve_temp_c": -14
+    },
+    {
+        "id": "B002",
+        "date": "2025-11-22",
+        "recipe": "vanilla_base",
+        "recipe_label": "Vanilla Base",
+        "version": 2,
+        "yield_g": 796,
+        "churn_min": 28,
+        "serve_temp_c": -12
+    },
+    {
+        "id": "B003",
+        "date": "2025-12-06",
+        "recipe": "strawberry_sorbet",
+        "recipe_label": "Strawberry Sorbet",
+        "version": 1,
+        "yield_g": 797,
+        "churn_min": 25,
+        "serve_temp_c": -11
+    },
+    {
+        "id": "B004",
+        "date": "2026-01-11",
+        "recipe": "dark_chocolate",
+        "recipe_label": "Dark Chocolate",
+        "version": 1,
+        "yield_g": 853,
+        "churn_min": 32,
+        "serve_temp_c": -12
+    },
+    {
+        "id": "B005",
+        "date": "2026-02-15",
+        "recipe": "salted_caramel",
+        "recipe_label": "Salted Caramel",
+        "version": 1,
+        "yield_g": 805,
+        "churn_min": 30,
+        "serve_temp_c": -13
+    }
+]

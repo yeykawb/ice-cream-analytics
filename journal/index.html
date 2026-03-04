@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Batch Journal — Ice Cream Analytics</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <script type="importmap">
+    {
+        "imports": {
+            "apache-arrow": "https://esm.sh/apache-arrow@17",
+            "apache-arrow/": "https://esm.sh/apache-arrow@17/"
+        }
+    }
+    </script>
+</head>
+<body>
+
+    <header>
+        <div class="container header-inner">
+            <div class="site-title">🍦 <span>Ice Cream</span> Analytics</div>
+            <nav>
+                <a href="../index.html">Dashboard</a>
+                <a href="index.html" class="active">Journal</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <div class="page-hero">
+            <h1>Batch Journal</h1>
+            <p>Every batch logged — ingredients, derived metrics, and honest notes on what worked and what didn't.</p>
+        </div>
+
+        <div id="journal-loading" class="loading">
+            <div class="spinner"></div>
+            Loading batches…
+        </div>
+
+        <div id="journal-list" class="journal-list"></div>
+
+    </main>
+
+    <script type="module" src="../assets/js/journal.js"></script>
+
+</body>
+</html>
