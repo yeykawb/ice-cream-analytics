@@ -409,6 +409,26 @@ nav a.active {
     margin-bottom: 4px;
 }
 
+/* ── Tag pills ──────────────────────────────────────── */
+
+.tag-pills-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.tag-pill {
+    display: inline-flex;
+    align-items: center;
+    background: rgba(255, 149, 0, 0.08);
+    border: 1px solid rgba(255, 149, 0, 0.3);
+    border-radius: 980px;
+    padding: 3px 10px;
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.03em;
+}
+
 /* ── Loading state ──────────────────────────────────── */
 
 .loading {

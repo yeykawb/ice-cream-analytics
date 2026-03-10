@@ -16,8 +16,12 @@ import { initDB, query } from './db.js';
         loading.style.display = 'none';
 
         batches.forEach(b => {
-            const avgScore  = b.avg_score;
-            const scoreClass = avgScore >= 4.5 ? 'great' : avgScore >= 3 ? 'ok' : 'poor';
+            const avgScore   = b.avg_score;
+            const scoreColor = avgScore >= 4.5 ? '#30d158' : avgScore >= 3 ? '#ff9500' : '#ff453a';
+
+            const tagPills = b.tags
+                ? b.tags.split(', ').map(t => `<span class="tag-pill">${t}</span>`).join('')
+                : '';
 
             const entry = document.createElement('article');
             entry.className = 'journal-entry';
@@ -26,6 +30,7 @@ import { initDB, query } from './db.js';
                     <div class="journal-entry-meta">
                         <h2>${b.recipe_label} <span style="color:var(--text-muted);font-weight:400">v${b.version}</span></h2>
                         <div class="date">${formatDate(b.date)} &nbsp;·&nbsp; Batch ${b.id}</div>
+                        ${tagPills ? `<div class="tag-pills-row" style="margin-top:8px">${tagPills}</div>` : ''}
                     </div>
                     <div class="journal-scores">
                         <div class="journal-score-item">
@@ -42,7 +47,7 @@ import { initDB, query } from './db.js';
                         </div>
                         <div class="journal-score-item">
                             <div class="score-label">Avg</div>
-                            <div class="score-num ${scoreClass === 'great' ? '' : ''}" style="color:${scoreClass === 'great' ? '#30d158' : scoreClass === 'ok' ? '#ff9500' : '#ff453a'}">${avgScore}</div>
+                            <div class="score-num" style="color:${scoreColor}">${avgScore}</div>
                         </div>
                     </div>
                 </div>
@@ -54,15 +59,11 @@ import { initDB, query } from './db.js';
                     ${pill('PAC',   b.pac_pct   + '%')}
                     ${pill('POD',   b.pod_pct   + '%')}
                     ${pill('FPD',   '−' + b.fpd_c + '°C')}
-                    ${pill('Yield', b.yield_g   + ' g')}
-                    ${pill('Churn', b.churn_min + ' min')}
-                    ${pill('Serve', b.serve_temp_c + '°C')}
                 </div>
 
                 <div class="journal-notes">
-                    ${note('Iciness / Texture', b.iciness_notes)}
-                    ${note('Body & Meltdown',   b.body_notes)}
-                    ${note('Overall',           b.overall_notes)}
+                    ${note('Info', b.batch_info)}
+                    ${note('Notes', b.notes)}
                 </div>
             `;
 
@@ -84,7 +85,7 @@ function note(label, text) {
     return `
         <div>
             <div class="journal-note-label">${label}</div>
-            <div class="journal-note">${text}</div>
+            <div class="journal-note">${text.replace(/\n/g, '<br>')}</div>
         </div>
     `;
 }

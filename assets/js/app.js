@@ -89,23 +89,16 @@ function renderMetrics(batch) {
         </div>
     `).join('');
 
+    const tagPills = batch.tags
+        ? batch.tags.split(', ').map(t => `<span class="tag-pill">${t}</span>`).join('')
+        : '';
+
     document.getElementById('batch-info').innerHTML = `
         <div class="metric-row">
             <span class="metric-name">Date</span>
             <span class="metric-val">${batch.date}</span>
         </div>
-        <div class="metric-row">
-            <span class="metric-name">Yield</span>
-            <span class="metric-val">${batch.yield_g} g</span>
-        </div>
-        <div class="metric-row">
-            <span class="metric-name">Churn time</span>
-            <span class="metric-val">${batch.churn_min} min</span>
-        </div>
-        <div class="metric-row">
-            <span class="metric-name">Serve temp</span>
-            <span class="metric-val">${batch.serve_temp_c}°C</span>
-        </div>
+        ${tagPills ? `<div class="tag-pills-row">${tagPills}</div>` : ''}
     `;
 }
 

@@ -1,14 +1,19 @@
 /**
  * db.js — DuckDB WASM initialisation and query runner.
  *
+ * Data source: .rcx files (IceCreamCalc XML exports) in data/rcx/.
+ * Discovered automatically via the directory listing served by Python's http.server.
+ *
  * Mirrors a medallion architecture in SQL:
- *   stg_*  → raw JSON loaded as tables
- *   int_*  → derived metrics (fat%, PAC, POD, FPD)
- *   fct_*  → joined fact table ready for the dashboard
- *   agg_*  → recipe-level aggregations
+ *   stg_ingredients  → TABLE built from parsed RCX data
+ *   int_batch_metrics → derived metrics (fat%, PAC, POD, FPD)
+ *   fct_batches       → joined fact table ready for the dashboard
+ *   agg_recipes       → recipe-level aggregations
  */
 
-let _db = null;
+import { parseRCX } from './rcx.js';
+
+let _db   = null;
 let _conn = null;
 
 export async function initDB() {
@@ -41,52 +46,49 @@ export async function initDB() {
 async function _loadData() {
     const base = _resolveBase();
 
-    // Fetch all four JSON files as text
-    const [ingredients, batches, batchIngredients, evaluations] = await Promise.all([
-        fetch(`${base}/data/ingredients_ref.json`).then(r => r.text()),
-        fetch(`${base}/data/batches.json`).then(r => r.text()),
-        fetch(`${base}/data/batch_ingredients.json`).then(r => r.text()),
-        fetch(`${base}/data/evaluations.json`).then(r => r.text()),
-    ]);
+    // Discover .rcx files via directory listing (Python http.server returns HTML)
+    const dirHtml = await fetch(`${base}/data/rcx/`).then(r => r.text());
+    const dirDoc  = new DOMParser().parseFromString(dirHtml, 'text/html');
+    const rcxFiles = [...dirDoc.querySelectorAll('a[href]')]
+        .map(a => a.getAttribute('href'))
+        .filter(href => /\.rcx$/i.test(href))
+        .map(href => href.split('/').pop()); // strip any leading path
+
+    // Sort by numeric B-prefix (B001 < B002 < B1000)
+    rcxFiles.sort((a, b) => {
+        const na = parseInt((a.match(/^B(\d+)/i) || [, '0'])[1]);
+        const nb = parseInt((b.match(/^B(\d+)/i) || [, '0'])[1]);
+        return na - nb;
+    });
+
+    if (rcxFiles.length === 0) {
+        throw new Error('No .rcx files found in data/rcx/. Add at least one batch file.');
+    }
+
+    // Fetch and parse all RCX files in parallel
+    const parsed = await Promise.all(rcxFiles.map(async filename => {
+        const batchId = (filename.match(/^(B\d+)/i) || ['', filename])[1].toUpperCase();
+        const xmlText = await fetch(`${base}/data/rcx/${filename}`).then(r => r.text());
+        return parseRCX(batchId, xmlText);
+    }));
+
+    const batches     = parsed.map(p => p.batch);
+    const evaluations = parsed.map(p => p.evaluation);
+    const stgRows     = parsed.flatMap(p => p.ingredientRows);
 
     // Register as virtual files in DuckDB's in-memory filesystem
-    await _db.registerFileText('ingredients_ref.json', ingredients);
-    await _db.registerFileText('batches.json', batches);
-    await _db.registerFileText('batch_ingredients.json', batchIngredients);
-    await _db.registerFileText('evaluations.json', evaluations);
+    await _db.registerFileText('batches.json',         JSON.stringify(batches));
+    await _db.registerFileText('evaluations.json',     JSON.stringify(evaluations));
+    await _db.registerFileText('stg_ingredients.json', JSON.stringify(stgRows));
 
-    await _conn.query(`CREATE TABLE ingredients_ref AS SELECT * FROM read_json_auto('ingredients_ref.json');`);
-    await _conn.query(`CREATE TABLE batches AS SELECT * FROM read_json_auto('batches.json');`);
-    await _conn.query(`CREATE TABLE batch_ingredients AS SELECT * FROM read_json_auto('batch_ingredients.json');`);
-    await _conn.query(`CREATE TABLE evaluations AS SELECT * FROM read_json_auto('evaluations.json');`);
+    await _conn.query(`CREATE TABLE batches         AS SELECT * FROM read_json_auto('batches.json');`);
+    await _conn.query(`CREATE TABLE evaluations     AS SELECT * FROM read_json_auto('evaluations.json');`);
+    await _conn.query(`CREATE TABLE stg_ingredients AS SELECT * FROM read_json_auto('stg_ingredients.json');`);
 }
 
 async function _buildViews() {
-    // stg: ingredient amounts joined with reference data
-    await _conn.query(`
-        CREATE VIEW stg_ingredients AS
-        SELECT
-            bi.batch_id,
-            bi.ingredient_id,
-            bi.amount_g,
-            ir.name            AS ingredient_name,
-            ir.fat_pct,
-            ir.msnf_pct,
-            ir.sugar_pct,
-            ir.water_pct,
-            ir.pac_coeff,
-            ir.pod_coeff,
-            bi.amount_g * ir.fat_pct   / 100 AS fat_g,
-            bi.amount_g * ir.msnf_pct  / 100 AS msnf_g,
-            bi.amount_g * ir.sugar_pct / 100 AS sugar_g,
-            bi.amount_g * ir.water_pct / 100 AS water_g,
-            bi.amount_g * ir.pac_coeff        AS pac_contrib,
-            bi.amount_g * ir.pod_coeff        AS pod_contrib
-        FROM batch_ingredients bi
-        JOIN ingredients_ref   ir ON bi.ingredient_id = ir.id;
-    `);
+    // stg_ingredients is now a TABLE (built in _loadData) — start from int_batch_metrics
 
-    // int: derived metrics per batch
     await _conn.query(`
         CREATE VIEW int_batch_metrics AS
         SELECT
@@ -103,7 +105,6 @@ async function _buildViews() {
         GROUP BY batch_id;
     `);
 
-    // fct: one row per batch with all attributes + scores
     await _conn.query(`
         CREATE VIEW fct_batches AS
         SELECT
@@ -112,9 +113,7 @@ async function _buildViews() {
             b.recipe,
             b.recipe_label,
             b.version,
-            b.yield_g,
-            b.churn_min,
-            b.serve_temp_c,
+            b.tags,
             m.fat_pct,
             m.msnf_pct,
             m.sugar_pct,
@@ -125,9 +124,8 @@ async function _buildViews() {
             e.texture_score,
             e.flavour_score,
             e.appearance_score,
-            e.iciness_notes,
-            e.body_notes,
-            e.overall_notes,
+            e.batch_info,
+            e.notes,
             ROUND((e.texture_score + e.flavour_score + e.appearance_score) / 3.0, 1) AS avg_score
         FROM batches            b
         JOIN int_batch_metrics  m ON b.id = m.batch_id
@@ -135,7 +133,6 @@ async function _buildViews() {
         ORDER BY b.date DESC;
     `);
 
-    // agg: per-recipe summary
     await _conn.query(`
         CREATE VIEW agg_recipes AS
         SELECT
