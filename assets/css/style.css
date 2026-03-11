@@ -377,6 +377,24 @@ nav a.active {
     outline: none;
 }
 
+.filter-tag-section {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    width: 100%;
+}
+
+.filter-group-label {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    min-width: 72px;
+    flex-shrink: 0;
+}
+
 .filter-tag-group {
     display: flex;
     flex-wrap: wrap;

@@ -1,0 +1,24 @@
+{
+  "groups": [
+    {
+      "label": "Type",
+      "tags": ["Gelato", "Ice cream", "Sorbet", "Sherbet"]
+    },
+    {
+      "label": "Equipment",
+      "tags": ["Wilfa ICMS-C15", "Musso Mini"]
+    },
+    {
+      "label": "Formula",
+      "tags": [
+        "Own formula", 
+        "Adapted", 
+        "Published recipe", 
+        "Adaywithmei", 
+        "Iván Vázquez", 
+        "Matt Adlard",
+        "Under-belly"
+    ]
+    }
+  ]
+}

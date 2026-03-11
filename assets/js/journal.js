@@ -36,9 +36,10 @@ let _activeTags = new Set();
         _initLightbox();
         loading.style.display = 'none';
 
-        const allTags = [...new Set(batches.flatMap(b => b.tags ? b.tags.split(', ') : []))].sort().filter(Boolean);
+        const allTags   = [...new Set(batches.flatMap(b => b.tags ? b.tags.split(', ') : []))].sort().filter(Boolean);
+        const tagGroups = await _loadTagGroups();
 
-        _buildFilters(allTags, list);
+        _buildFilters(allTags, tagGroups, list);
         _renderEntries(list);
 
     } catch (err) {
@@ -49,17 +50,40 @@ let _activeTags = new Set();
 
 // ── Filter bar ──────────────────────────────────────────
 
-function _buildFilters(tags, list) {
+async function _loadTagGroups() {
+    try {
+        const res = await fetch(`${_base}/data/tag-groups.json`);
+        if (!res.ok) return [];
+        return (await res.json()).groups ?? [];
+    } catch { return []; }
+}
+
+function _buildFilters(allTags, tagGroups, list) {
     const bar = document.getElementById('journal-filter-bar');
     if (!bar) return;
 
-    const tagButtons = tags
-        .map(t => `<button class="filter-tag-btn" data-tag="${t}">${t}</button>`)
-        .join('');
+    // Match group config tags (case-insensitive) against actual tags in data
+    const tagMap      = new Map(allTags.map(t => [t.toLowerCase(), t]));
+    const assigned    = new Set();
+    const groupSects  = tagGroups.map(g => {
+        const matched = g.tags.map(t => tagMap.get(t.toLowerCase())).filter(Boolean);
+        matched.forEach(t => assigned.add(t));
+        return { label: g.label, tags: matched };
+    }).filter(g => g.tags.length > 0);
+
+    const ungrouped = allTags.filter(t => !assigned.has(t));
+
+    const btn  = t  => `<button class="filter-tag-btn" data-tag="${t}">${t}</button>`;
+    const sect = (label, tags) => `
+        <div class="filter-tag-section">
+            ${label ? `<span class="filter-group-label">${label}</span>` : ''}
+            <div class="filter-tag-group">${tags.map(btn).join('')}</div>
+        </div>`;
 
     bar.innerHTML = `
         <input type="search" class="filter-search" id="filter-search" placeholder="Search recipe or tag…">
-        ${tagButtons ? `<div class="filter-tag-group">${tagButtons}</div>` : ''}
+        ${groupSects.map(g => sect(g.label, g.tags)).join('')}
+        ${ungrouped.length ? sect('', ungrouped) : ''}
         <button class="filter-clear" id="filter-clear" hidden>Clear</button>
     `;
 
