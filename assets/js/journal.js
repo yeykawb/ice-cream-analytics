@@ -1,9 +1,14 @@
 /**
  * journal.js — Batch journal rendering.
- * Reverse-chronological log of all batches with metrics + notes.
+ * Entries collapsed by default; filterable by text search and tag.
  */
 
 import { initDB, query } from './db.js';
+
+let _batches    = [];
+let _ingMap     = new Map();
+let _searchText = '';
+let _activeTags = new Set();
 
 (async () => {
     const list    = document.getElementById('journal-list');
@@ -11,27 +16,125 @@ import { initDB, query } from './db.js';
 
     try {
         await initDB();
-        const batches = await query('SELECT * FROM fct_batches ORDER BY date DESC');
+        const [batches, ingRows] = await Promise.all([
+            query('SELECT * FROM fct_batches ORDER BY date DESC'),
+            query('SELECT batch_id, ingredient_name, amount_g FROM stg_ingredients ORDER BY batch_id, amount_g DESC'),
+        ]);
+
+        _batches = batches;
+
+        for (const r of ingRows) {
+            if (!_ingMap.has(r.batch_id)) _ingMap.set(r.batch_id, []);
+            _ingMap.get(r.batch_id).push(r);
+        }
 
         loading.style.display = 'none';
 
-        batches.forEach(b => {
-            const avgScore   = b.avg_score;
-            const scoreColor = avgScore >= 4.5 ? '#30d158' : avgScore >= 3 ? '#ff9500' : '#ff453a';
+        const allTags = [...new Set(batches.flatMap(b => b.tags ? b.tags.split(', ') : []))].sort().filter(Boolean);
 
-            const tagPills = b.tags
-                ? b.tags.split(', ').map(t => `<span class="tag-pill">${t}</span>`).join('')
-                : '';
+        _buildFilters(allTags, list);
+        _renderEntries(list);
 
-            const entry = document.createElement('article');
-            entry.className = 'journal-entry';
-            entry.innerHTML = `
-                <div class="journal-entry-header">
-                    <div class="journal-entry-meta">
-                        <h2>${b.recipe_label} <span style="color:var(--text-muted);font-weight:400">v${b.version}</span></h2>
-                        <div class="date">${formatDate(b.date)} &nbsp;·&nbsp; Batch ${b.id}</div>
-                        ${tagPills ? `<div class="tag-pills-row" style="margin-top:8px">${tagPills}</div>` : ''}
-                    </div>
+    } catch (err) {
+        loading.innerHTML = `<p style="color:#ff453a">Failed to load journal: ${err.message}</p>`;
+        console.error(err);
+    }
+})();
+
+// ── Filter bar ──────────────────────────────────────────
+
+function _buildFilters(tags, list) {
+    const bar = document.getElementById('journal-filter-bar');
+    if (!bar) return;
+
+    const tagButtons = tags
+        .map(t => `<button class="filter-tag-btn" data-tag="${t}">${t}</button>`)
+        .join('');
+
+    bar.innerHTML = `
+        <input type="search" class="filter-search" id="filter-search" placeholder="Search recipe or tag…">
+        ${tagButtons ? `<div class="filter-tag-group">${tagButtons}</div>` : ''}
+        <button class="filter-clear" id="filter-clear" hidden>Clear</button>
+    `;
+
+    const searchEl = document.getElementById('filter-search');
+    const clearEl  = document.getElementById('filter-clear');
+
+    searchEl.addEventListener('input', e => {
+        _searchText = e.target.value.trim().toLowerCase();
+        _syncClear(clearEl, searchEl);
+        _renderEntries(list);
+    });
+
+    bar.querySelectorAll('.filter-tag-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const tag = btn.dataset.tag;
+            if (_activeTags.has(tag)) {
+                _activeTags.delete(tag);
+                btn.classList.remove('active');
+            } else {
+                _activeTags.add(tag);
+                btn.classList.add('active');
+            }
+            _syncClear(clearEl, searchEl);
+            _renderEntries(list);
+        });
+    });
+
+    clearEl.addEventListener('click', () => {
+        _searchText = '';
+        _activeTags.clear();
+        searchEl.value = '';
+        bar.querySelectorAll('.filter-tag-btn').forEach(b => b.classList.remove('active'));
+        _syncClear(clearEl, searchEl);
+        _renderEntries(list);
+    });
+}
+
+function _syncClear(btn) {
+    btn.hidden = !_searchText && _activeTags.size === 0;
+}
+
+// ── Entry rendering ─────────────────────────────────────
+
+function _renderEntries(list) {
+    const filtered = _batches.filter(b => {
+        if (_searchText) {
+            const haystack = [b.recipe_label, b.tags || '', b.id].join(' ').toLowerCase();
+            if (!haystack.includes(_searchText)) return false;
+        }
+        if (_activeTags.size > 0) {
+            const bTags = new Set(b.tags ? b.tags.split(', ') : []);
+            for (const t of _activeTags) if (!bTags.has(t)) return false;
+        }
+        return true;
+    });
+
+    list.innerHTML = '';
+
+    if (!filtered.length) {
+        list.innerHTML = '<p class="journal-empty">No batches match the current filter.</p>';
+        return;
+    }
+
+    filtered.forEach(b => {
+        const avgScore   = b.avg_score;
+        const scoreColor = avgScore >= 4.5 ? '#30d158' : avgScore >= 3 ? '#ff9500' : '#ff453a';
+
+        const tagPills = b.tags
+            ? b.tags.split(', ').map(t => `<span class="tag-pill">${t}</span>`).join('')
+            : '';
+
+        const entry = document.createElement('details');
+        entry.className = 'journal-entry';
+        entry.innerHTML = `
+            <summary class="journal-entry-summary">
+                <div class="journal-entry-meta">
+                    <h2>${b.recipe_label} <span style="color:var(--text-muted);font-weight:400">v${b.version}</span></h2>
+                    <div class="date">${formatDate(b.date)} &nbsp;·&nbsp; Batch ${b.id}</div>
+                    ${tagPills ? `<div class="tag-pills-row" style="margin-top:8px">${tagPills}</div>` : ''}
+                </div>
+                <div class="journal-entry-right">
                     <div class="journal-scores">
                         <div class="journal-score-item">
                             <div class="score-label">Texture</div>
@@ -50,8 +153,11 @@ import { initDB, query } from './db.js';
                             <div class="score-num" style="color:${scoreColor}">${avgScore}</div>
                         </div>
                     </div>
+                    <span class="journal-chevron">›</span>
                 </div>
+            </summary>
 
+            <div class="journal-entry-body">
                 <div class="journal-metrics-row">
                     ${pill('Fat',   b.fat_pct  + '%')}
                     ${pill('MSNF',  b.msnf_pct + '%')}
@@ -62,31 +168,48 @@ import { initDB, query } from './db.js';
                 </div>
 
                 <div class="journal-notes">
+                    ${ingredients(_ingMap.get(b.id) || [])}
                     ${note('Info', b.batch_info)}
                     ${note('Notes', b.notes)}
                 </div>
-            `;
+            </div>
+        `;
 
-            list.appendChild(entry);
-        });
+        list.appendChild(entry);
+    });
+}
 
-    } catch (err) {
-        loading.innerHTML = `<p style="color:#ff453a">Failed to load journal: ${err.message}</p>`;
-        console.error(err);
-    }
-})();
+// ── Helpers ─────────────────────────────────────────────
 
 function pill(label, value) {
     return `<span class="journal-metric-pill">${label} <strong>${value}</strong></span>`;
 }
 
+function ingredients(rows) {
+    if (!rows.length) return '';
+    const items = rows.map(r => {
+        const g = Math.round(r.amount_g * 10) / 10;
+        return `<div class="ingredient-row">
+            <span class="ingredient-name">${r.ingredient_name}</span>
+            <span class="ingredient-amount">${g}g</span>
+        </div>`;
+    }).join('');
+    return `
+        <details class="journal-note-block" open>
+            <summary class="journal-note-label">Ingredients</summary>
+            <div class="ingredient-list">${items}</div>
+        </details>
+    `;
+}
+
 function note(label, text) {
     if (!text) return '';
+    const open = text.length <= 280 ? ' open' : '';
     return `
-        <div>
-            <div class="journal-note-label">${label}</div>
+        <details class="journal-note-block"${open}>
+            <summary class="journal-note-label">${label}</summary>
             <div class="journal-note">${text.replace(/\n/g, '<br>')}</div>
-        </div>
+        </details>
     `;
 }
 

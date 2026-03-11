@@ -6,24 +6,26 @@
 import { initDB, query } from './db.js';
 import { renderRadar, renderScatter, renderTimeline } from './charts.js';
 
-const ROOT = document.getElementById('app-root');
-
-async function main() {
-    showLoading();
+(async () => {
+    document.getElementById('dashboard-loading').style.display = 'flex';
+    document.getElementById('dashboard-content').style.display = 'none';
 
     try {
         await initDB();
-
         const batches = await query('SELECT * FROM fct_batches ORDER BY date DESC');
+
+        document.getElementById('dashboard-loading').style.display = 'none';
+        document.getElementById('dashboard-content').style.display = 'block';
 
         renderStats(batches);
         renderBatchSelector(batches, batches[0]);
         renderCharts(batches, batches[0]);
     } catch (err) {
-        ROOT.innerHTML = `<p style="color:#ff453a;padding:40px">Failed to load: ${err.message}</p>`;
+        document.getElementById('dashboard-loading').innerHTML =
+            `<p style="color:#ff453a">Failed to initialise: ${err.message}</p>`;
         console.error(err);
     }
-}
+})();
 
 // ── Stats row ──────────────────────────────────────────
 
@@ -35,32 +37,41 @@ function renderStats(batches) {
 
     document.getElementById('stat-batches').textContent  = total;
     document.getElementById('stat-avg').textContent      = avgScore;
-    document.getElementById('stat-best').textContent     = `${best.avg_score}`;
+    document.getElementById('stat-best').textContent     = best.avg_score;
     document.getElementById('stat-best-sub').textContent = `${best.recipe_label} v${best.version}`;
     document.getElementById('stat-recipes').textContent  = recipes;
 }
 
-// ── Batch selector pills ───────────────────────────────
+// ── Batch selector (flat scrollable list) ─────────────
 
 function renderBatchSelector(batches, active) {
     const wrap = document.getElementById('batch-selector');
     wrap.innerHTML = '';
 
     batches.forEach(b => {
-        const pill = document.createElement('button');
-        pill.className   = 'batch-pill' + (b.id === active.id ? ' active' : '');
-        pill.textContent = `${b.recipe_label} v${b.version}`;
-        pill.title       = b.date;
-        pill.addEventListener('click', () => {
-            document.querySelectorAll('.batch-pill').forEach(p => p.classList.remove('active'));
-            pill.classList.add('active');
+        const scoreColor = b.avg_score >= 4.5 ? '#30d158' : b.avg_score >= 3 ? '#ff9500' : '#ff453a';
+        const item = document.createElement('button');
+        item.className = 'batch-list-item' + (b.id === active.id ? ' active' : '');
+        item.innerHTML = `
+            <span class="batch-item-id">${b.id}</span>
+            <span class="batch-item-name">${b.recipe_label} <span class="batch-item-version">v${b.version}</span></span>
+            <span class="batch-item-date">${fmtDate(b.date)}</span>
+            <span class="batch-item-score" style="color:${scoreColor}">${b.avg_score}</span>
+        `;
+        item.addEventListener('click', () => {
+            wrap.querySelectorAll('.batch-list-item').forEach(i => i.classList.remove('active'));
+            item.classList.add('active');
             renderBatchDetail(b);
         });
-        wrap.appendChild(pill);
+        wrap.appendChild(item);
     });
 }
 
-// ── Batch detail panel (radar + metrics) ──────────────
+function fmtDate(d) {
+    return new Date(d).toLocaleDateString('en-SE', { year: 'numeric', month: 'short', day: 'numeric' });
+}
+
+// ── Batch detail panel ─────────────────────────────────
 
 function renderBatchDetail(batch) {
     renderRadar('radar-chart', batch);
@@ -96,7 +107,7 @@ function renderMetrics(batch) {
     document.getElementById('batch-info').innerHTML = `
         <div class="metric-row">
             <span class="metric-name">Date</span>
-            <span class="metric-val">${batch.date}</span>
+            <span class="metric-val">${fmtDate(batch.date)}</span>
         </div>
         ${tagPills ? `<div class="tag-pills-row">${tagPills}</div>` : ''}
     `;
@@ -110,34 +121,3 @@ function renderCharts(batches, activeBatch) {
     renderScatter('scatter-chart', batches);
     renderTimeline('timeline-chart', batches);
 }
-
-// ── Loading state ──────────────────────────────────────
-
-function showLoading() {
-    document.getElementById('dashboard-loading').style.display = 'flex';
-    document.getElementById('dashboard-content').style.display = 'none';
-}
-
-function hideLoading() {
-    document.getElementById('dashboard-loading').style.display = 'none';
-    document.getElementById('dashboard-content').style.display = 'block';
-}
-
-// Override showLoading to hide content once DB is ready
-const _origMain = main;
-(async () => {
-    showLoading();
-    try {
-        await initDB();
-        const batches = await query('SELECT * FROM fct_batches ORDER BY date DESC');
-
-        hideLoading();
-        renderStats(batches);
-        renderBatchSelector(batches, batches[0]);
-        renderCharts(batches, batches[0]);
-    } catch (err) {
-        document.getElementById('dashboard-loading').innerHTML =
-            `<p style="color:#ff453a">Failed to initialise: ${err.message}</p>`;
-        console.error(err);
-    }
-})();
