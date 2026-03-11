@@ -232,27 +232,49 @@ function _resolveBase() {
 }
 
 async function _loadMedia() {
-    try {
-        const res = await fetch(`${_base}/data/media/`);
-        if (!res.ok) return new Map();
-        const html  = await res.text();
-        const doc   = new DOMParser().parseFromString(html, 'text/html');
-        const files = [...doc.querySelectorAll('a[href]')]
-            .map(a => a.getAttribute('href').split('/').pop())
-            .filter(f => /\.(jpg|jpeg|png|gif|webp|mp4|mov|webm)$/i.test(f));
-
-        const map = new Map();
-        for (const f of files) {
-            const m = f.match(/^(B\d+)/i);
-            if (!m) continue;
-            const id = m[1].toUpperCase();
-            if (!map.has(id)) map.set(id, []);
-            map.get(id).push(f);
-        }
-        return map;
-    } catch {
-        return new Map();
+    const pattern = /\.(jpg|jpeg|png|gif|webp|mp4|mov|webm)$/i;
+    const files   = await _discoverFiles('data/media', pattern);
+    const map     = new Map();
+    for (const f of files) {
+        const m = f.match(/^(B\d+)/i);
+        if (!m) continue;
+        const id = m[1].toUpperCase();
+        if (!map.has(id)) map.set(id, []);
+        map.get(id).push(f);
     }
+    return map;
+}
+
+async function _discoverFiles(dir, pattern) {
+    try {
+        const res = await fetch(`${_base}/${dir}/`);
+        if (res.ok) {
+            const html  = await res.text();
+            const doc   = new DOMParser().parseFromString(html, 'text/html');
+            const files = [...doc.querySelectorAll('a[href]')]
+                .map(a => a.getAttribute('href').split('/').pop())
+                .filter(f => pattern.test(f));
+            if (files.length > 0) return files;
+        }
+    } catch { /* fall through */ }
+
+    const apiUrl = _githubContentsUrl(dir);
+    if (!apiUrl) return [];
+    try {
+        const res  = await fetch(apiUrl, { headers: { Accept: 'application/vnd.github.v3+json' } });
+        if (!res.ok) return [];
+        const items = await res.json();
+        return items.filter(f => f.type === 'file' && pattern.test(f.name)).map(f => f.name);
+    } catch { return []; }
+}
+
+function _githubContentsUrl(path) {
+    const host = window.location.hostname;
+    if (!host.endsWith('.github.io')) return null;
+    const owner = host.replace('.github.io', '');
+    const repo  = window.location.pathname.split('/').filter(Boolean)[0];
+    if (!repo) return null;
+    return `https://api.github.com/repos/${owner}/${repo}/contents/${path}`;
 }
 
 function mediaSection(files) {

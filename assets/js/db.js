@@ -46,13 +46,13 @@ export async function initDB() {
 async function _loadData() {
     const base = _resolveBase();
 
-    // Discover .rcx files via directory listing (Python http.server returns HTML)
-    const dirHtml = await fetch(`${base}/data/rcx/`).then(r => r.text());
-    const dirDoc  = new DOMParser().parseFromString(dirHtml, 'text/html');
-    const rcxFiles = [...dirDoc.querySelectorAll('a[href]')]
-        .map(a => a.getAttribute('href'))
-        .filter(href => /\.rcx$/i.test(href))
-        .map(href => href.split('/').pop()); // strip any leading path
+    // Discover .rcx files — try Python http.server directory listing first,
+    // then fall back to GitHub Contents API (for GitHub Pages deployment).
+    const rcxFiles = await _discoverFiles(base, 'data/rcx', /\.rcx$/i);
+
+    if (rcxFiles.length === 0) {
+        throw new Error('No .rcx files found in data/rcx/. Add at least one batch file.');
+    }
 
     // Sort by numeric B-prefix (B001 < B002 < B1000)
     rcxFiles.sort((a, b) => {
@@ -60,10 +60,6 @@ async function _loadData() {
         const nb = parseInt((b.match(/^B(\d+)/i) || [, '0'])[1]);
         return na - nb;
     });
-
-    if (rcxFiles.length === 0) {
-        throw new Error('No .rcx files found in data/rcx/. Add at least one batch file.');
-    }
 
     // Fetch and parse all RCX files in parallel
     const parsed = await Promise.all(rcxFiles.map(async filename => {
@@ -173,6 +169,40 @@ export async function query(sql) {
 }
 
 // ── Helpers ────────────────────────────────────────────
+
+// Try directory listing (Python dev server), fall back to GitHub Contents API.
+async function _discoverFiles(base, dir, pattern) {
+    try {
+        const res = await fetch(`${base}/${dir}/`);
+        if (res.ok) {
+            const html  = await res.text();
+            const doc   = new DOMParser().parseFromString(html, 'text/html');
+            const files = [...doc.querySelectorAll('a[href]')]
+                .map(a => a.getAttribute('href').split('/').pop())
+                .filter(f => pattern.test(f));
+            if (files.length > 0) return files;
+        }
+    } catch { /* fall through */ }
+
+    // GitHub Pages: derive owner/repo from hostname/pathname
+    const apiUrl = _githubContentsUrl(dir);
+    if (!apiUrl) return [];
+    try {
+        const res  = await fetch(apiUrl, { headers: { Accept: 'application/vnd.github.v3+json' } });
+        if (!res.ok) return [];
+        const items = await res.json();
+        return items.filter(f => f.type === 'file' && pattern.test(f.name)).map(f => f.name);
+    } catch { return []; }
+}
+
+function _githubContentsUrl(path) {
+    const host = window.location.hostname;
+    if (!host.endsWith('.github.io')) return null;
+    const owner = host.replace('.github.io', '');
+    const repo  = window.location.pathname.split('/').filter(Boolean)[0];
+    if (!repo) return null;
+    return `https://api.github.com/repos/${owner}/${repo}/contents/${path}`;
+}
 
 function _resolveBase() {
     // Works from both /index.html and /journal/index.html
