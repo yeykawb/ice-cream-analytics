@@ -31,14 +31,17 @@ import { renderRadar, renderScatter, renderTimeline } from './charts.js';
 
 function renderStats(batches) {
     const total    = batches.length;
-    const avgScore = (batches.reduce((s, b) => s + b.avg_score, 0) / total).toFixed(1);
-    const best     = batches.slice().sort((a, b) => b.avg_score - a.avg_score)[0];
+    const rated    = batches.filter(b => b.avg_score != null);
+    const avgScore = rated.length
+        ? (rated.reduce((s, b) => s + b.avg_score, 0) / rated.length).toFixed(1)
+        : '—';
+    const best     = rated.slice().sort((a, b) => b.avg_score - a.avg_score)[0];
     const recipes  = new Set(batches.map(b => b.recipe)).size;
 
     document.getElementById('stat-batches').textContent  = total;
     document.getElementById('stat-avg').textContent      = avgScore;
-    document.getElementById('stat-best').textContent     = best.avg_score;
-    document.getElementById('stat-best-sub').textContent = `${best.recipe_label} v${best.version}`;
+    document.getElementById('stat-best').textContent     = best ? best.avg_score : '—';
+    document.getElementById('stat-best-sub').textContent = best ? `${best.recipe_label} v${best.version}` : 'no rated batches';
     document.getElementById('stat-recipes').textContent  = recipes;
 }
 
@@ -49,14 +52,16 @@ function renderBatchSelector(batches, active) {
     wrap.innerHTML = '';
 
     batches.forEach(b => {
-        const scoreColor = b.avg_score >= 4.5 ? '#30d158' : b.avg_score >= 3 ? '#ff9500' : '#ff453a';
+        const unrated    = b.avg_score == null;
+        const scoreColor = unrated ? 'var(--text-muted)' : b.avg_score >= 4.5 ? '#30d158' : b.avg_score >= 3 ? '#ff9500' : '#ff453a';
+        const scoreLabel = unrated ? '—' : b.avg_score;
         const item = document.createElement('button');
         item.className = 'batch-list-item' + (b.id === active.id ? ' active' : '');
         item.innerHTML = `
             <span class="batch-item-id">${b.id}</span>
             <span class="batch-item-name">${b.recipe_label} <span class="batch-item-version">v${b.version}</span></span>
             <span class="batch-item-date">${fmtDate(b.date)}</span>
-            <span class="batch-item-score" style="color:${scoreColor}">${b.avg_score}</span>
+            <span class="batch-item-score" style="color:${scoreColor}">${scoreLabel}</span>
         `;
         item.addEventListener('click', () => {
             wrap.querySelectorAll('.batch-list-item').forEach(i => i.classList.remove('active'));

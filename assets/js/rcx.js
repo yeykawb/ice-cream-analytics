@@ -104,9 +104,9 @@ export function parseRCX(batchId, xmlText) {
     // ── Evaluation (ratings + notes) ───────────────────
     const evaluation = {
         batch_id:         batchId,
-        texture_score:    dcNum('RateTexture'),
-        flavour_score:    dcNum('RateTaste'),
-        appearance_score: dcNum('RateColor'),
+        texture_score:    dcNum('RateTexture')  || null,
+        flavour_score:    dcNum('RateTaste')    || null,
+        appearance_score: dcNum('RateColor')    || null,
         batch_info:       dcTxt('Info'),
         notes:            rtfToPlain(dcTxt('Rtf')),
     };

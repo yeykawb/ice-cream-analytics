@@ -7,6 +7,8 @@ import { initDB, query } from './db.js';
 
 let _batches    = [];
 let _ingMap     = new Map();
+let _mediaMap   = new Map();
+let _base       = '';
 let _searchText = '';
 let _activeTags = new Set();
 
@@ -15,19 +17,23 @@ let _activeTags = new Set();
     const loading = document.getElementById('journal-loading');
 
     try {
+        _base = _resolveBase();
+
         await initDB();
         const [batches, ingRows] = await Promise.all([
             query('SELECT * FROM fct_batches ORDER BY date DESC'),
             query('SELECT batch_id, ingredient_name, amount_g FROM stg_ingredients ORDER BY batch_id, amount_g DESC'),
         ]);
 
-        _batches = batches;
+        _batches  = batches;
+        _mediaMap = await _loadMedia();
 
         for (const r of ingRows) {
             if (!_ingMap.has(r.batch_id)) _ingMap.set(r.batch_id, []);
             _ingMap.get(r.batch_id).push(r);
         }
 
+        _initLightbox();
         loading.style.display = 'none';
 
         const allTags = [...new Set(batches.flatMap(b => b.tags ? b.tags.split(', ') : []))].sort().filter(Boolean);
@@ -119,7 +125,8 @@ function _renderEntries(list) {
 
     filtered.forEach(b => {
         const avgScore   = b.avg_score;
-        const scoreColor = avgScore >= 4.5 ? '#30d158' : avgScore >= 3 ? '#ff9500' : '#ff453a';
+        const unrated    = avgScore == null;
+        const scoreColor = unrated ? 'var(--text-muted)' : avgScore >= 4.5 ? '#30d158' : avgScore >= 3 ? '#ff9500' : '#ff453a';
 
         const tagPills = b.tags
             ? b.tags.split(', ').map(t => `<span class="tag-pill">${t}</span>`).join('')
@@ -138,19 +145,19 @@ function _renderEntries(list) {
                     <div class="journal-scores">
                         <div class="journal-score-item">
                             <div class="score-label">Texture</div>
-                            <div class="score-num">${b.texture_score}</div>
+                            <div class="score-num">${b.texture_score ?? '—'}</div>
                         </div>
                         <div class="journal-score-item">
                             <div class="score-label">Flavour</div>
-                            <div class="score-num">${b.flavour_score}</div>
+                            <div class="score-num">${b.flavour_score ?? '—'}</div>
                         </div>
                         <div class="journal-score-item">
                             <div class="score-label">Appearance</div>
-                            <div class="score-num">${b.appearance_score}</div>
+                            <div class="score-num">${b.appearance_score ?? '—'}</div>
                         </div>
                         <div class="journal-score-item">
                             <div class="score-label">Avg</div>
-                            <div class="score-num" style="color:${scoreColor}">${avgScore}</div>
+                            <div class="score-num" style="color:${scoreColor}">${avgScore ?? '—'}</div>
                         </div>
                     </div>
                     <span class="journal-chevron">›</span>
@@ -168,6 +175,7 @@ function _renderEntries(list) {
                 </div>
 
                 <div class="journal-notes">
+                    ${mediaSection(_mediaMap.get(b.id) || [])}
                     ${ingredients(_ingMap.get(b.id) || [])}
                     ${note('Info', b.batch_info)}
                     ${note('Notes', b.notes)}
@@ -211,6 +219,78 @@ function note(label, text) {
             <div class="journal-note">${text.replace(/\n/g, '<br>')}</div>
         </details>
     `;
+}
+
+// ── Media ────────────────────────────────────────────
+
+function _resolveBase() {
+    const path = window.location.pathname;
+    if (path.includes('/journal')) {
+        return window.location.origin + path.replace(/\/journal\/.*$/, '');
+    }
+    return window.location.origin + path.replace(/\/[^/]*$/, '');
+}
+
+async function _loadMedia() {
+    try {
+        const res = await fetch(`${_base}/data/media/`);
+        if (!res.ok) return new Map();
+        const html  = await res.text();
+        const doc   = new DOMParser().parseFromString(html, 'text/html');
+        const files = [...doc.querySelectorAll('a[href]')]
+            .map(a => a.getAttribute('href').split('/').pop())
+            .filter(f => /\.(jpg|jpeg|png|gif|webp|mp4|mov|webm)$/i.test(f));
+
+        const map = new Map();
+        for (const f of files) {
+            const m = f.match(/^(B\d+)/i);
+            if (!m) continue;
+            const id = m[1].toUpperCase();
+            if (!map.has(id)) map.set(id, []);
+            map.get(id).push(f);
+        }
+        return map;
+    } catch {
+        return new Map();
+    }
+}
+
+function mediaSection(files) {
+    if (!files.length) return '';
+    const items = files.map(f => {
+        const url     = `${_base}/data/media/${encodeURIComponent(f)}`;
+        const isVideo = /\.(mp4|mov|webm)$/i.test(f);
+        if (isVideo) {
+            return `<video class="media-video" src="${url}" controls preload="none"></video>`;
+        }
+        return `<img class="media-thumb" src="${url}" alt="${f}" loading="lazy" data-fullsrc="${url}">`;
+    }).join('');
+    return `
+        <details class="journal-note-block" open>
+            <summary class="journal-note-label">Media</summary>
+            <div class="media-grid">${items}</div>
+        </details>
+    `;
+}
+
+function _initLightbox() {
+    const lb = document.createElement('div');
+    lb.id = 'lightbox';
+    lb.className = 'lightbox';
+    lb.hidden = true;
+    lb.innerHTML = '<img class="lightbox-img" src="" alt="">';
+    document.body.appendChild(lb);
+
+    document.getElementById('journal-list').addEventListener('click', e => {
+        const thumb = e.target.closest('.media-thumb');
+        if (thumb) {
+            lb.querySelector('.lightbox-img').src = thumb.dataset.fullsrc;
+            lb.hidden = false;
+        }
+    });
+
+    lb.addEventListener('click', () => { lb.hidden = true; });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') lb.hidden = true; });
 }
 
 function formatDate(iso) {

@@ -1,5 +1,5 @@
 ﻿<Recipe>
-  <Name>Under-belly Strawberry Sorbet</Name>
+  <Name>Strawberry Sorbet</Name>
   <Info />
   <Rtf>{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1053{\fonttbl{\f0\fnil\fcharset0 Microsoft Sans Serif;}{\f1\fnil Microsoft Sans Serif;}}
 {\*\generator Riched20 10.0.22621}\viewkind4\uc1 
@@ -36,7 +36,7 @@ Start:\par
   <RevisionID>70</RevisionID>
   <Revision>1</Revision>
   <CreatedDate>2026-02-19</CreatedDate>
-  <ChangedDate>2026-03-05</ChangedDate>
+  <ChangedDate>2026-03-11</ChangedDate>
   <UserID />
   <Barcode />
   <QR />
@@ -58,7 +58,11 @@ Start:\par
   <Locked>0</Locked>
   <Chart />
   <Panel />
-  <Tags />
+  <Tags>
+    <Name>Sorbet</Name>
+    <Name>Under-belly</Name>
+    <Name>Wilfa ICMS-C15</Name>
+  </Tags>
   <Ingredients>
     <Ingredient>
       <Item>

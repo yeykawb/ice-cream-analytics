@@ -126,7 +126,13 @@ async function _buildViews() {
             e.appearance_score,
             e.batch_info,
             e.notes,
-            ROUND((e.texture_score + e.flavour_score + e.appearance_score) / 3.0, 1) AS avg_score
+            ROUND(
+                (COALESCE(e.texture_score, 0) + COALESCE(e.flavour_score, 0) + COALESCE(e.appearance_score, 0))
+                / NULLIF(
+                    (e.texture_score IS NOT NULL)::INT +
+                    (e.flavour_score IS NOT NULL)::INT +
+                    (e.appearance_score IS NOT NULL)::INT, 0)
+            , 1) AS avg_score
         FROM batches            b
         JOIN int_batch_metrics  m ON b.id = m.batch_id
         LEFT JOIN evaluations   e ON b.id = e.batch_id
@@ -157,7 +163,11 @@ export async function query(sql) {
         const obj = r.toJSON();
         // Arrow v17 returns Int64 columns as BigInt; convert to Number for Chart.js
         return Object.fromEntries(
-            Object.entries(obj).map(([k, v]) => [k, typeof v === 'bigint' ? Number(v) : v])
+            Object.entries(obj).map(([k, v]) => {
+                if (typeof v === 'bigint') return [k, Number(v)];
+                if (v === 'null' || v === 'undefined') return [k, null];
+                return [k, v];
+            })
         );
     });
 }

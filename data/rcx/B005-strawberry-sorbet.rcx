@@ -1,15 +1,19 @@
 ﻿<Recipe>
-  <Name>Lemon Curd Gelato</Name>
-  <Info>Lemon curd as swirl post churn.</Info>
+  <Name>Strawberry Sorbet</Name>
+  <Info>Added:
++50 sucrose 
++0,25g citric acid
++8g balsamic vinegar</Info>
   <Rtf>{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1053{\fonttbl{\f0\fnil\fcharset0 Microsoft Sans Serif;}{\f1\fnil Microsoft Sans Serif;}}
 {\*\generator Riched20 10.0.22621}\viewkind4\uc1 
-\pard\f0\fs24 Added lemon curd as swirl while churning. This was a huge mistake, as the curd got mixed in and didn't swirl like stracciatella.\f1\par
+\pard\f0\fs24 Could add even more balsamic vinegar and sugars.\par
+Recipe already revisioned.\f1\par
 }
 </Rtf>
   <Evaporation>0</Evaporation>
-  <RevisionID>72</RevisionID>
-  <Revision>1</Revision>
-  <CreatedDate>2026-03-08</CreatedDate>
+  <RevisionID>70</RevisionID>
+  <Revision>2</Revision>
+  <CreatedDate>2026-03-05</CreatedDate>
   <ChangedDate>2026-03-11</ChangedDate>
   <UserID />
   <Barcode />
@@ -23,24 +27,24 @@
   <Cavities>1</Cavities>
   <_Overrun>-1</_Overrun>
   <_Density>-1</_Density>
-  <RateOverall>3</RateOverall>
-  <RateTexture>3</RateTexture>
-  <RateBody>3</RateBody>
-  <RateTaste>3</RateTaste>
-  <RateColor>3</RateColor>
+  <RateOverall>0</RateOverall>
+  <RateTexture>0</RateTexture>
+  <RateBody>0</RateBody>
+  <RateTaste>0</RateTaste>
+  <RateColor>0</RateColor>
   <AutoSizeTable>-1</AutoSizeTable>
   <Locked>0</Locked>
   <Chart />
   <Panel />
   <Tags>
-    <Name>Lemon</Name>
-    <Name>Own formula</Name>
+    <Name>Sorbet</Name>
+    <Name>Under-belly</Name>
     <Name>Wilfa ICMS-C15</Name>
   </Tags>
   <Ingredients>
     <Ingredient>
       <Item>
-        <Weight>420</Weight>
+        <Weight>680</Weight>
         <Calc />
         <Comment />
         <AddIn>0</AddIn>
@@ -51,171 +55,26 @@
         <MaxVal>1</MaxVal>
         <IsRecipe>0</IsRecipe>
       </Item>
-      <name>Whole milk 3.5</name>
-      <category>Dairy</category>
-      <info />
-      <created>2025-09-09</created>
-      <changed>2025-09-09</changed>
-      <nutrientsverified>0</nutrientsverified>
-      <portionsize>100</portionsize>
-      <gramperml>1</gramperml>
-      <energy>0.6581</energy>
-      <water>0.8786</water>
-      <totalfat>0.0345</totalfat>
-      <saturatedfat>0.0231</saturatedfat>
-      <transfat>0</transfat>
-      <cocoafat>0</cocoafat>
-      <milkfat>0.0345</milkfat>
-      <cholesterol>0</cholesterol>
-      <sodium>0</sodium>
-      <salt>0</salt>
-      <alcohol>0</alcohol>
-      <user1>0</user1>
-      <user2>0</user2>
-      <user3>0</user3>
-      <user4>0</user4>
-      <user5>0</user5>
-      <user6>0</user6>
-      <carbohydrates>0.0474</carbohydrates>
-      <fiber>0</fiber>
-      <totalsugars>0.0474</totalsugars>
-      <sugar2>0</sugar2>
-      <addedsugars>0</addedsugars>
-      <polyols>0</polyols>
-      <lactose>0.0474</lactose>
-      <protein>0.0313</protein>
-      <vitamind>0</vitamind>
-      <calcium>0</calcium>
-      <iron>0</iron>
-      <potassium>0</potassium>
-      <othersolids>0.0082</othersolids>
-      <cocoasolids>0</cocoasolids>
-      <totalsolids>0.1214</totalsolids>
-      <msnf>0.0869</msnf>
-      <stabilizers>0</stabilizers>
-      <emulsifiers>0</emulsifiers>
-      <pac>0.0474</pac>
-      <pod>0.0076</pod>
-      <hf>0</hf>
-      <costkg>0</costkg>
-      <amountmin>0</amountmin>
-      <amountmax>1</amountmax>
-      <Allergens />
-      <SubIngredients>
-        <SubIngredient>
-          <Name>Whole milk 3.5</Name>
-          <Amount>100</Amount>
-          <Category>INGREDIENTS</Category>
-          <Highlight>0</Highlight>
-        </SubIngredient>
-      </SubIngredients>
-    </Ingredient>
-    <Ingredient>
-      <Item>
-        <Weight>140</Weight>
-        <Calc />
-        <Comment />
-        <AddIn>0</AddIn>
-        <Infusion>0</Infusion>
-        <Locked>0</Locked>
-        <Scale>1</Scale>
-        <MinVal>0</MinVal>
-        <MaxVal>1</MaxVal>
-        <IsRecipe>0</IsRecipe>
-      </Item>
-      <name>Cream 33</name>
-      <category>Dairy</category>
-      <info />
-      <created>2025-09-09</created>
-      <changed>2025-09-09</changed>
-      <nutrientsverified>0</nutrientsverified>
-      <portionsize>100</portionsize>
-      <gramperml>1</gramperml>
-      <energy>3.2112</energy>
-      <water>0.6097</water>
-      <totalfat>0.33</totalfat>
-      <saturatedfat>0.2211</saturatedfat>
-      <transfat>0</transfat>
-      <cocoafat>0</cocoafat>
-      <milkfat>0.33</milkfat>
-      <cholesterol>0</cholesterol>
-      <sodium>0</sodium>
-      <salt>0</salt>
-      <alcohol>0</alcohol>
-      <user1>0</user1>
-      <user2>0</user2>
-      <user3>0</user3>
-      <user4>0</user4>
-      <user5>0</user5>
-      <user6>0</user6>
-      <carbohydrates>0.032864</carbohydrates>
-      <fiber>0</fiber>
-      <totalsugars>0.032864</totalsugars>
-      <sugar2>0</sugar2>
-      <addedsugars>0</addedsugars>
-      <polyols>0</polyols>
-      <lactose>0.032864</lactose>
-      <protein>0.021708</protein>
-      <vitamind>0</vitamind>
-      <calcium>0</calcium>
-      <iron>0</iron>
-      <potassium>0</potassium>
-      <othersolids>0.005729</othersolids>
-      <cocoasolids>0</cocoasolids>
-      <totalsolids>0.3903</totalsolids>
-      <msnf>0.0603</msnf>
-      <stabilizers>0</stabilizers>
-      <emulsifiers>0</emulsifiers>
-      <pac>0.032864</pac>
-      <pod>0.005258</pod>
-      <hf>0</hf>
-      <costkg>0</costkg>
-      <amountmin>0</amountmin>
-      <amountmax>1</amountmax>
-      <Allergens />
-      <SubIngredients>
-        <SubIngredient>
-          <Name>Cream 33</Name>
-          <Amount>100</Amount>
-          <Category>INGREDIENTS</Category>
-          <Highlight>0</Highlight>
-        </SubIngredient>
-      </SubIngredients>
-    </Ingredient>
-    <Ingredient>
-      <Item>
-        <Weight>130</Weight>
-        <Calc />
-        <Comment />
-        <AddIn>0</AddIn>
-        <Infusion>0</Infusion>
-        <Locked>0</Locked>
-        <Scale>1</Scale>
-        <MinVal>0</MinVal>
-        <MaxVal>1</MaxVal>
-        <IsRecipe>0</IsRecipe>
-      </Item>
-      <name>Mackay's Lemon Curd</name>
-      <category>Other</category>
-      <info>A lemon curd with 5.7g fat, carbohydrates 75g, sugars 69g, protein 1.4g, salt 0.06g per 100g
-Ingredients: Sucrose, whole eggs (pasteurized), butter, modified corn starch, lemon juice. gelling agent: pectin. acidity regulator: citric acid and lemon oil
+      <name>Strawberry Brix 7-8</name>
+      <category>Fruit</category>
+      <info>A strawberry purée with a BRIX value of between 7-8.
 Confidence: high
-Ingredient list shows sucrose as main sugar, with eggs and butter providing fat and protein. Carbohydrates mostly from sucrose, with some starch from modified corn starch. Sugars nearly all sucrose, with minor glucose/fructose from lemon juice. Butter provides most saturated fat and butterfat. MSNF and lactose are low due to small butter content. Ash, minerals, and fiber are low. Salt and sodium calculated from label. No cocoa, alcohol, or sugar alcohols. Added sugars nearly all from sucrose. Starch from modified corn starch. Values cross-checked with typical commercial lemon curd.</info>
-      <created>2026-03-08</created>
-      <changed>2026-03-08</changed>
+Strawberry purée with Brix 7-8 is mostly water with 7-8% soluble solids, primarily natural sugars and some fiber. Typical strawberry composition used: ~0.6g protein, ~0.2g fat, ~8g carbs (of which ~6g are sugars, ~1.5g fiber), and trace minerals. No added sugars or sugar alcohols. Sugars breakdown based on USDA data for strawberries. Ash, vitamins, and minerals estimated from standard strawberry purée values. No dairy or cocoa content.</info>
+      <created>2026-03-04</created>
+      <changed>2026-03-04</changed>
       <nutrientsverified>0</nutrientsverified>
       <portionsize>100</portionsize>
       <gramperml>0</gramperml>
-      <energy>3.565</energy>
-      <water>0.17600000000000005</water>
-      <totalfat>0.057</totalfat>
-      <saturatedfat>0.035</saturatedfat>
+      <energy>0.3320000000000001</energy>
+      <water>0.908</water>
+      <totalfat>0.002</totalfat>
+      <saturatedfat>0.0001</saturatedfat>
       <transfat>0</transfat>
       <cocoafat>0</cocoafat>
-      <milkfat>0.035</milkfat>
+      <milkfat>0</milkfat>
       <cholesterol>0</cholesterol>
-      <sodium>0.00024</sodium>
-      <salt>0.0006</salt>
+      <sodium>0.0001</sodium>
+      <salt>0.0003</salt>
       <alcohol>0</alcohol>
       <user1>0</user1>
       <user2>0</user2>
@@ -223,34 +82,34 @@ Ingredient list shows sucrose as main sugar, with eggs and butter providing fat 
       <user4>0</user4>
       <user5>0</user5>
       <user6>0</user6>
-      <carbohydrates>0.75</carbohydrates>
-      <fiber>0.002</fiber>
-      <totalsugars>0.69</totalsugars>
+      <carbohydrates>0.08</carbohydrates>
+      <fiber>0.015</fiber>
+      <totalsugars>0.06</totalsugars>
       <sugar2>0</sugar2>
-      <addedsugars>0.65</addedsugars>
+      <addedsugars>0</addedsugars>
       <polyols>0</polyols>
-      <lactose>0.001</lactose>
-      <protein>0.013999999999999999</protein>
+      <lactose>0</lactose>
+      <protein>0.006</protein>
       <vitamind>0</vitamind>
-      <calcium>0.0004</calcium>
-      <iron>0.001</iron>
-      <potassium>0.0004</potassium>
-      <othersolids>0.06240000000000001</othersolids>
+      <calcium>0.16</calcium>
+      <iron>0.004</iron>
+      <potassium>1.5</potassium>
+      <othersolids>0.023700000000000027</othersolids>
       <cocoasolids>0</cocoasolids>
-      <totalsolids>0.824</totalsolids>
-      <msnf>0.002</msnf>
+      <totalsolids>0.092</totalsolids>
+      <msnf>0</msnf>
       <stabilizers>0</stabilizers>
       <emulsifiers>0</emulsifiers>
-      <pac>0.7170000000000001</pac>
-      <pod>0.67506</pod>
-      <hf>0.030799999999999998</hf>
+      <pac>0.10049999999999999</pac>
+      <pod>0.07103999999999999</pod>
+      <hf>0.0028</hf>
       <costkg>0</costkg>
       <amountmin>0</amountmin>
       <amountmax>1</amountmax>
       <Allergens />
       <SubIngredients>
         <SubIngredient>
-          <Name>Mackay's Lemon Curd</Name>
+          <Name>Strawberry Brix 7-8</Name>
           <Amount>100</Amount>
           <Category>INGREDIENTS</Category>
           <Highlight>0</Highlight>
@@ -259,7 +118,151 @@ Ingredient list shows sucrose as main sugar, with eggs and butter providing fat 
     </Ingredient>
     <Ingredient>
       <Item>
-        <Weight>55</Weight>
+        <Weight>50</Weight>
+        <Calc />
+        <Comment />
+        <AddIn>0</AddIn>
+        <Infusion>0</Infusion>
+        <Locked>0</Locked>
+        <Scale>1</Scale>
+        <MinVal>0</MinVal>
+        <MaxVal>1</MaxVal>
+        <IsRecipe>0</IsRecipe>
+      </Item>
+      <name>Sucrose</name>
+      <category>Sugar</category>
+      <info />
+      <created>2025-09-09</created>
+      <changed>2025-09-09</changed>
+      <nutrientsverified>0</nutrientsverified>
+      <portionsize>100</portionsize>
+      <gramperml>0.9</gramperml>
+      <energy>4</energy>
+      <water>0</water>
+      <totalfat>0</totalfat>
+      <saturatedfat>0</saturatedfat>
+      <transfat>0</transfat>
+      <cocoafat>0</cocoafat>
+      <milkfat>0</milkfat>
+      <cholesterol>0</cholesterol>
+      <sodium>0</sodium>
+      <salt>0</salt>
+      <alcohol>0</alcohol>
+      <user1>0</user1>
+      <user2>0</user2>
+      <user3>0</user3>
+      <user4>0</user4>
+      <user5>0</user5>
+      <user6>0</user6>
+      <carbohydrates>1</carbohydrates>
+      <fiber>0</fiber>
+      <totalsugars>1</totalsugars>
+      <sugar2>0</sugar2>
+      <addedsugars>1</addedsugars>
+      <polyols>0</polyols>
+      <lactose>0</lactose>
+      <protein>0</protein>
+      <vitamind>0</vitamind>
+      <calcium>0</calcium>
+      <iron>0</iron>
+      <potassium>0</potassium>
+      <othersolids>0</othersolids>
+      <cocoasolids>0</cocoasolids>
+      <totalsolids>1</totalsolids>
+      <msnf>0</msnf>
+      <stabilizers>0</stabilizers>
+      <emulsifiers>0</emulsifiers>
+      <pac>1</pac>
+      <pod>1</pod>
+      <hf>0</hf>
+      <costkg>0</costkg>
+      <amountmin>0</amountmin>
+      <amountmax>1</amountmax>
+      <Allergens />
+      <SubIngredients>
+        <SubIngredient>
+          <Name>Sucrose</Name>
+          <Amount>100</Amount>
+          <Category>INGREDIENTS</Category>
+          <Highlight>0</Highlight>
+        </SubIngredient>
+      </SubIngredients>
+    </Ingredient>
+    <Ingredient>
+      <Item>
+        <Weight>60.666666666666664</Weight>
+        <Calc />
+        <Comment />
+        <AddIn>0</AddIn>
+        <Infusion>0</Infusion>
+        <Locked>0</Locked>
+        <Scale>1</Scale>
+        <MinVal>0</MinVal>
+        <MaxVal>1</MaxVal>
+        <IsRecipe>0</IsRecipe>
+      </Item>
+      <name>Glucose powder 40 DE</name>
+      <category>Sugar</category>
+      <info />
+      <created>2025-09-09</created>
+      <changed>2025-09-09</changed>
+      <nutrientsverified>0</nutrientsverified>
+      <portionsize>100</portionsize>
+      <gramperml>0</gramperml>
+      <energy>3.8</energy>
+      <water>0.05</water>
+      <totalfat>0</totalfat>
+      <saturatedfat>0</saturatedfat>
+      <transfat>0</transfat>
+      <cocoafat>0</cocoafat>
+      <milkfat>0</milkfat>
+      <cholesterol>0</cholesterol>
+      <sodium>0</sodium>
+      <salt>0</salt>
+      <alcohol>0</alcohol>
+      <user1>0</user1>
+      <user2>0</user2>
+      <user3>0</user3>
+      <user4>0</user4>
+      <user5>0</user5>
+      <user6>0</user6>
+      <carbohydrates>0.95</carbohydrates>
+      <fiber>0</fiber>
+      <totalsugars>0.38</totalsugars>
+      <sugar2>0</sugar2>
+      <addedsugars>0.38</addedsugars>
+      <polyols>0</polyols>
+      <lactose>0</lactose>
+      <protein>0</protein>
+      <vitamind>0</vitamind>
+      <calcium>0</calcium>
+      <iron>0</iron>
+      <potassium>0</potassium>
+      <othersolids>0.57</othersolids>
+      <cocoasolids>0</cocoasolids>
+      <totalsolids>0.95</totalsolids>
+      <msnf>0</msnf>
+      <stabilizers>0</stabilizers>
+      <emulsifiers>0</emulsifiers>
+      <pac>0.78</pac>
+      <pod>0.34</pod>
+      <hf>0</hf>
+      <costkg>0</costkg>
+      <amountmin>0</amountmin>
+      <amountmax>1</amountmax>
+      <Allergens />
+      <SubIngredients>
+        <SubIngredient>
+          <Name>Glucose powder 40 DE</Name>
+          <Amount>100</Amount>
+          <Category>INGREDIENTS</Category>
+          <Highlight>0</Highlight>
+        </SubIngredient>
+      </SubIngredients>
+    </Ingredient>
+    <Ingredient>
+      <Item>
+        <Weight>50.4</Weight>
         <Calc />
         <Comment />
         <AddIn>0</AddIn>
@@ -331,7 +334,7 @@ Ingredient list shows sucrose as main sugar, with eggs and butter providing fat 
     </Ingredient>
     <Ingredient>
       <Item>
-        <Weight>33</Weight>
+        <Weight>48.53333333333333</Weight>
         <Calc />
         <Comment />
         <AddIn>0</AddIn>
@@ -342,232 +345,16 @@ Ingredient list shows sucrose as main sugar, with eggs and butter providing fat 
         <MaxVal>1</MaxVal>
         <IsRecipe>0</IsRecipe>
       </Item>
-      <name>Skim milk powder</name>
-      <category>Dairy</category>
-      <info />
-      <created>2025-09-09</created>
-      <changed>2025-09-09</changed>
-      <nutrientsverified>0</nutrientsverified>
-      <portionsize>100</portionsize>
-      <gramperml>0.5</gramperml>
-      <energy>3.9704</energy>
-      <water>0.0199</water>
-      <totalfat>0.01</totalfat>
-      <saturatedfat>0.0067</saturatedfat>
-      <transfat>0</transfat>
-      <cocoafat>0</cocoafat>
-      <milkfat>0.01</milkfat>
-      <cholesterol>0</cholesterol>
-      <sodium>0</sodium>
-      <salt>0</salt>
-      <alcohol>0</alcohol>
-      <user1>0</user1>
-      <user2>0</user2>
-      <user3>0</user3>
-      <user4>0</user4>
-      <user5>0</user5>
-      <user6>0</user6>
-      <carbohydrates>0.53</carbohydrates>
-      <fiber>0</fiber>
-      <totalsugars>0.5287</totalsugars>
-      <sugar2>0</sugar2>
-      <addedsugars>0</addedsugars>
-      <polyols>0</polyols>
-      <lactose>0.5287</lactose>
-      <protein>0.3492</protein>
-      <vitamind>0</vitamind>
-      <calcium>0</calcium>
-      <iron>0</iron>
-      <potassium>0</potassium>
-      <othersolids>0.0922</othersolids>
-      <cocoasolids>0</cocoasolids>
-      <totalsolids>0.9801</totalsolids>
-      <msnf>0.97</msnf>
-      <stabilizers>0</stabilizers>
-      <emulsifiers>0</emulsifiers>
-      <pac>0.529</pac>
-      <pod>0.085</pod>
-      <hf>0</hf>
-      <costkg>0</costkg>
-      <amountmin>0</amountmin>
-      <amountmax>1</amountmax>
-      <Allergens />
-      <SubIngredients>
-        <SubIngredient>
-          <Name>Skim milk powder</Name>
-          <Amount>100</Amount>
-          <Category>INGREDIENTS</Category>
-          <Highlight>0</Highlight>
-        </SubIngredient>
-      </SubIngredients>
-    </Ingredient>
-    <Ingredient>
-      <Item>
-        <Weight>3</Weight>
-        <Calc />
-        <Comment />
-        <AddIn>0</AddIn>
-        <Infusion>0</Infusion>
-        <Locked>0</Locked>
-        <Scale>1</Scale>
-        <MinVal>0</MinVal>
-        <MaxVal>0.006</MaxVal>
-        <IsRecipe>0</IsRecipe>
-      </Item>
-      <name>Lecithin</name>
-      <category>Emulsifier</category>
-      <info />
-      <created>2025-09-09</created>
-      <changed>2025-09-09</changed>
-      <nutrientsverified>0</nutrientsverified>
-      <portionsize>100</portionsize>
-      <gramperml>0</gramperml>
-      <energy>0</energy>
-      <water>0</water>
-      <totalfat>0</totalfat>
-      <saturatedfat>0</saturatedfat>
-      <transfat>0</transfat>
-      <cocoafat>0</cocoafat>
-      <milkfat>0</milkfat>
-      <cholesterol>0</cholesterol>
-      <sodium>0</sodium>
-      <salt>0</salt>
-      <alcohol>0</alcohol>
-      <user1>0</user1>
-      <user2>0</user2>
-      <user3>0</user3>
-      <user4>0</user4>
-      <user5>0</user5>
-      <user6>0</user6>
-      <carbohydrates>1</carbohydrates>
-      <fiber>0</fiber>
-      <totalsugars>0</totalsugars>
-      <sugar2>0</sugar2>
-      <addedsugars>0</addedsugars>
-      <polyols>0</polyols>
-      <lactose>0</lactose>
-      <protein>0</protein>
-      <vitamind>0</vitamind>
-      <calcium>0</calcium>
-      <iron>0</iron>
-      <potassium>0</potassium>
-      <othersolids>1</othersolids>
-      <cocoasolids>0</cocoasolids>
-      <totalsolids>1</totalsolids>
-      <msnf>0</msnf>
-      <stabilizers>0</stabilizers>
-      <emulsifiers>1</emulsifiers>
-      <pac>0</pac>
-      <pod>0</pod>
-      <hf>0</hf>
-      <costkg>0</costkg>
-      <amountmin>0</amountmin>
-      <amountmax>0.006</amountmax>
-      <Allergens />
-      <SubIngredients>
-        <SubIngredient>
-          <Name>Lecithin</Name>
-          <Amount>100</Amount>
-          <Category>INGREDIENTS</Category>
-          <Highlight>0</Highlight>
-        </SubIngredient>
-      </SubIngredients>
-    </Ingredient>
-    <Ingredient>
-      <Item>
-        <Weight>2</Weight>
-        <Calc />
-        <Comment />
-        <AddIn>0</AddIn>
-        <Infusion>0</Infusion>
-        <Locked>0</Locked>
-        <Scale>1</Scale>
-        <MinVal>0</MinVal>
-        <MaxVal>1</MaxVal>
-        <IsRecipe>0</IsRecipe>
-      </Item>
-      <name>Citric acid</name>
-      <category>Other</category>
-      <info />
-      <created>2025-09-09</created>
-      <changed>2025-09-09</changed>
-      <nutrientsverified>1</nutrientsverified>
-      <portionsize>100</portionsize>
-      <gramperml>0</gramperml>
-      <energy>0</energy>
-      <water>0</water>
-      <totalfat>0</totalfat>
-      <saturatedfat>0</saturatedfat>
-      <transfat>0</transfat>
-      <cocoafat>0</cocoafat>
-      <milkfat>0</milkfat>
-      <cholesterol>0</cholesterol>
-      <sodium>0</sodium>
-      <salt>0</salt>
-      <alcohol>0</alcohol>
-      <user1>0</user1>
-      <user2>0</user2>
-      <user3>0</user3>
-      <user4>0</user4>
-      <user5>0</user5>
-      <user6>0</user6>
-      <carbohydrates>0</carbohydrates>
-      <fiber>0</fiber>
-      <totalsugars>0</totalsugars>
-      <sugar2>0</sugar2>
-      <addedsugars>0</addedsugars>
-      <polyols>0</polyols>
-      <lactose>0</lactose>
-      <protein>0</protein>
-      <vitamind>0</vitamind>
-      <calcium>0</calcium>
-      <iron>0</iron>
-      <potassium>0</potassium>
-      <othersolids>1</othersolids>
-      <cocoasolids>0</cocoasolids>
-      <totalsolids>1</totalsolids>
-      <msnf>0</msnf>
-      <stabilizers>0</stabilizers>
-      <emulsifiers>0</emulsifiers>
-      <pac>1.781662</pac>
-      <pod>0</pod>
-      <hf>0</hf>
-      <costkg>0</costkg>
-      <amountmin>0</amountmin>
-      <amountmax>1</amountmax>
-      <Allergens />
-      <SubIngredients>
-        <SubIngredient>
-          <Name>Citric acid</Name>
-          <Amount>100</Amount>
-          <Category>INGREDIENTS</Category>
-          <Highlight>0</Highlight>
-        </SubIngredient>
-      </SubIngredients>
-    </Ingredient>
-    <Ingredient>
-      <Item>
-        <Weight>1.05</Weight>
-        <Calc />
-        <Comment />
-        <AddIn>0</AddIn>
-        <Infusion>0</Infusion>
-        <Locked>0</Locked>
-        <Scale>1</Scale>
-        <MinVal>0</MinVal>
-        <MaxVal>0.01</MaxVal>
-        <IsRecipe>0</IsRecipe>
-      </Item>
-      <name>Salt</name>
+      <name>Water</name>
       <category>Other</category>
       <info />
       <created>2025-09-09</created>
       <changed>2025-09-09</changed>
       <nutrientsverified>0</nutrientsverified>
       <portionsize>100</portionsize>
-      <gramperml>1.25</gramperml>
+      <gramperml>1</gramperml>
       <energy>0</energy>
-      <water>0</water>
+      <water>1</water>
       <totalfat>0</totalfat>
       <saturatedfat>0</saturatedfat>
       <transfat>0</transfat>
@@ -575,7 +362,7 @@ Ingredient list shows sucrose as main sugar, with eggs and butter providing fat 
       <milkfat>0</milkfat>
       <cholesterol>0</cholesterol>
       <sodium>0</sodium>
-      <salt>1</salt>
+      <salt>0</salt>
       <alcohol>0</alcohol>
       <user1>0</user1>
       <user2>0</user2>
@@ -597,7 +384,7 @@ Ingredient list shows sucrose as main sugar, with eggs and butter providing fat 
       <potassium>0</potassium>
       <othersolids>0</othersolids>
       <cocoasolids>0</cocoasolids>
-      <totalsolids>1</totalsolids>
+      <totalsolids>0</totalsolids>
       <msnf>0</msnf>
       <stabilizers>0</stabilizers>
       <emulsifiers>0</emulsifiers>
@@ -606,11 +393,11 @@ Ingredient list shows sucrose as main sugar, with eggs and butter providing fat 
       <hf>0</hf>
       <costkg>0</costkg>
       <amountmin>0</amountmin>
-      <amountmax>0.01</amountmax>
+      <amountmax>1</amountmax>
       <Allergens />
       <SubIngredients>
         <SubIngredient>
-          <Name>Salt</Name>
+          <Name>Water</Name>
           <Amount>100</Amount>
           <Category>INGREDIENTS</Category>
           <Highlight>0</Highlight>
@@ -619,7 +406,296 @@ Ingredient list shows sucrose as main sugar, with eggs and butter providing fat 
     </Ingredient>
     <Ingredient>
       <Item>
-        <Weight>0.83</Weight>
+        <Weight>40</Weight>
+        <Calc />
+        <Comment />
+        <AddIn>0</AddIn>
+        <Infusion>0</Infusion>
+        <Locked>0</Locked>
+        <Scale>1</Scale>
+        <MinVal>0</MinVal>
+        <MaxVal>1</MaxVal>
+        <IsRecipe>0</IsRecipe>
+      </Item>
+      <name>Maltodextrin 19DE</name>
+      <category>Sugar</category>
+      <info>18 DE</info>
+      <created>2025-09-09</created>
+      <changed>2026-01-01</changed>
+      <nutrientsverified>0</nutrientsverified>
+      <portionsize>100</portionsize>
+      <gramperml>0</gramperml>
+      <energy>3.8</energy>
+      <water>0.05</water>
+      <totalfat>0</totalfat>
+      <saturatedfat>0</saturatedfat>
+      <transfat>0</transfat>
+      <cocoafat>0</cocoafat>
+      <milkfat>0</milkfat>
+      <cholesterol>0</cholesterol>
+      <sodium>0</sodium>
+      <salt>0</salt>
+      <alcohol>0</alcohol>
+      <user1>0</user1>
+      <user2>0</user2>
+      <user3>0</user3>
+      <user4>0</user4>
+      <user5>0</user5>
+      <user6>0</user6>
+      <carbohydrates>0.95</carbohydrates>
+      <fiber>0</fiber>
+      <totalsugars>0.07</totalsugars>
+      <sugar2>0</sugar2>
+      <addedsugars>0</addedsugars>
+      <polyols>0</polyols>
+      <lactose>0</lactose>
+      <protein>0</protein>
+      <vitamind>0</vitamind>
+      <calcium>0</calcium>
+      <iron>0</iron>
+      <potassium>0</potassium>
+      <othersolids>0.88</othersolids>
+      <cocoasolids>0</cocoasolids>
+      <totalsolids>0.95</totalsolids>
+      <msnf>0</msnf>
+      <stabilizers>0</stabilizers>
+      <emulsifiers>0</emulsifiers>
+      <pac>0.23</pac>
+      <pod>0.09</pod>
+      <hf>0</hf>
+      <costkg>0</costkg>
+      <amountmin>0</amountmin>
+      <amountmax>1</amountmax>
+      <Allergens />
+      <SubIngredients>
+        <SubIngredient>
+          <Name>Maltodextrin 19DE</Name>
+          <Amount>100</Amount>
+          <Category>INGREDIENTS</Category>
+          <Highlight>0</Highlight>
+        </SubIngredient>
+      </SubIngredients>
+    </Ingredient>
+    <Ingredient>
+      <Item>
+        <Weight>39.2</Weight>
+        <Calc />
+        <Comment />
+        <AddIn>0</AddIn>
+        <Infusion>0</Infusion>
+        <Locked>0</Locked>
+        <Scale>1</Scale>
+        <MinVal>0</MinVal>
+        <MaxVal>1</MaxVal>
+        <IsRecipe>0</IsRecipe>
+      </Item>
+      <name>Dextrose</name>
+      <category>Sugar</category>
+      <info />
+      <created>2025-09-09</created>
+      <changed>2025-09-09</changed>
+      <nutrientsverified>0</nutrientsverified>
+      <portionsize>100</portionsize>
+      <gramperml>0.64</gramperml>
+      <energy>3.68</energy>
+      <water>0.08</water>
+      <totalfat>0</totalfat>
+      <saturatedfat>0</saturatedfat>
+      <transfat>0</transfat>
+      <cocoafat>0</cocoafat>
+      <milkfat>0</milkfat>
+      <cholesterol>0</cholesterol>
+      <sodium>0</sodium>
+      <salt>0</salt>
+      <alcohol>0</alcohol>
+      <user1>0</user1>
+      <user2>0</user2>
+      <user3>0</user3>
+      <user4>0</user4>
+      <user5>0</user5>
+      <user6>0</user6>
+      <carbohydrates>0.92</carbohydrates>
+      <fiber>0</fiber>
+      <totalsugars>0.92</totalsugars>
+      <sugar2>0</sugar2>
+      <addedsugars>0.92</addedsugars>
+      <polyols>0</polyols>
+      <lactose>0</lactose>
+      <protein>0</protein>
+      <vitamind>0</vitamind>
+      <calcium>0</calcium>
+      <iron>0</iron>
+      <potassium>0</potassium>
+      <othersolids>0</othersolids>
+      <cocoasolids>0</cocoasolids>
+      <totalsolids>0.92</totalsolids>
+      <msnf>0</msnf>
+      <stabilizers>0</stabilizers>
+      <emulsifiers>0</emulsifiers>
+      <pac>1.75</pac>
+      <pod>0.71</pod>
+      <hf>0</hf>
+      <costkg>0</costkg>
+      <amountmin>0</amountmin>
+      <amountmax>1</amountmax>
+      <Allergens />
+      <SubIngredients>
+        <SubIngredient>
+          <Name>Dextrose</Name>
+          <Amount>100</Amount>
+          <Category>INGREDIENTS</Category>
+          <Highlight>0</Highlight>
+        </SubIngredient>
+      </SubIngredients>
+    </Ingredient>
+    <Ingredient>
+      <Item>
+        <Weight>25.2</Weight>
+        <Calc />
+        <Comment />
+        <AddIn>0</AddIn>
+        <Infusion>0</Infusion>
+        <Locked>0</Locked>
+        <Scale>1</Scale>
+        <MinVal>0</MinVal>
+        <MaxVal>0.1</MaxVal>
+        <IsRecipe>0</IsRecipe>
+      </Item>
+      <name>Inulin</name>
+      <category>Other</category>
+      <info />
+      <created>2025-09-09</created>
+      <changed>2026-01-01</changed>
+      <nutrientsverified>1</nutrientsverified>
+      <portionsize>100</portionsize>
+      <gramperml>0</gramperml>
+      <energy>2.08</energy>
+      <water>0.04</water>
+      <totalfat>0</totalfat>
+      <saturatedfat>0</saturatedfat>
+      <transfat>0</transfat>
+      <cocoafat>0</cocoafat>
+      <milkfat>0</milkfat>
+      <cholesterol>0</cholesterol>
+      <sodium>0</sodium>
+      <salt>0.002</salt>
+      <alcohol>0</alcohol>
+      <user1>0</user1>
+      <user2>0</user2>
+      <user3>0</user3>
+      <user4>0</user4>
+      <user5>0</user5>
+      <user6>0</user6>
+      <carbohydrates>0.96</carbohydrates>
+      <fiber>0.88</fiber>
+      <totalsugars>0.08</totalsugars>
+      <sugar2>0</sugar2>
+      <addedsugars>0</addedsugars>
+      <polyols>0</polyols>
+      <lactose>0</lactose>
+      <protein>0</protein>
+      <vitamind>0</vitamind>
+      <calcium>0</calcium>
+      <iron>0</iron>
+      <potassium>0</potassium>
+      <othersolids>0.878</othersolids>
+      <cocoasolids>0</cocoasolids>
+      <totalsolids>0.96</totalsolids>
+      <msnf>0</msnf>
+      <stabilizers>0</stabilizers>
+      <emulsifiers>0</emulsifiers>
+      <pac>0.1</pac>
+      <pod>0.1</pod>
+      <hf>0</hf>
+      <costkg>0</costkg>
+      <amountmin>0</amountmin>
+      <amountmax>0.1</amountmax>
+      <Allergens />
+      <SubIngredients>
+        <SubIngredient>
+          <Name>Inulin</Name>
+          <Amount>100</Amount>
+          <Category>INGREDIENTS</Category>
+          <Highlight>0</Highlight>
+        </SubIngredient>
+      </SubIngredients>
+    </Ingredient>
+    <Ingredient>
+      <Item>
+        <Weight>20</Weight>
+        <Calc />
+        <Comment />
+        <AddIn>0</AddIn>
+        <Infusion>0</Infusion>
+        <Locked>0</Locked>
+        <Scale>1</Scale>
+        <MinVal>0</MinVal>
+        <MaxVal>1</MaxVal>
+        <IsRecipe>0</IsRecipe>
+      </Item>
+      <name>Balsamic Vinegar</name>
+      <category>Fruit</category>
+      <info>Confidence: high
+Balsamic vinegar is made from grape must and wine vinegar, typically contains 15–17g carbs/100g, mostly as sugars (glucose, fructose). Protein and fat are negligible. Ash, sodium, and minerals are low but present. No added sugars, alcohol, or fiber. Values based on USDA and EU food composition tables for balsamic vinegar.</info>
+      <created>2026-03-04</created>
+      <changed>2026-03-04</changed>
+      <nutrientsverified>0</nutrientsverified>
+      <portionsize>100</portionsize>
+      <gramperml>0</gramperml>
+      <energy>0.7000000000000001</energy>
+      <water>0.8220000000000001</water>
+      <totalfat>0</totalfat>
+      <saturatedfat>0</saturatedfat>
+      <transfat>0</transfat>
+      <cocoafat>0</cocoafat>
+      <milkfat>0</milkfat>
+      <cholesterol>0</cholesterol>
+      <sodium>0.00023</sodium>
+      <salt>0.0006</salt>
+      <alcohol>0</alcohol>
+      <user1>0</user1>
+      <user2>0</user2>
+      <user3>0</user3>
+      <user4>0</user4>
+      <user5>0</user5>
+      <user6>0</user6>
+      <carbohydrates>0.17</carbohydrates>
+      <fiber>0</fiber>
+      <totalsugars>0.15</totalsugars>
+      <sugar2>0</sugar2>
+      <addedsugars>0</addedsugars>
+      <polyols>0</polyols>
+      <lactose>0</lactose>
+      <protein>0.005</protein>
+      <vitamind>0</vitamind>
+      <calcium>0.0002</calcium>
+      <iron>0.003</iron>
+      <potassium>0.001</potassium>
+      <othersolids>0.022399999999999975</othersolids>
+      <cocoasolids>0</cocoasolids>
+      <totalsolids>0.178</totalsolids>
+      <msnf>0</msnf>
+      <stabilizers>0</stabilizers>
+      <emulsifiers>0</emulsifiers>
+      <pac>0.27599999999999997</pac>
+      <pod>0.17989999999999998</pod>
+      <hf>0</hf>
+      <costkg>0</costkg>
+      <amountmin>0</amountmin>
+      <amountmax>1</amountmax>
+      <Allergens />
+      <SubIngredients>
+        <SubIngredient>
+          <Name>Balsamic Vinegar</Name>
+          <Amount>100</Amount>
+          <Category>INGREDIENTS</Category>
+          <Highlight>0</Highlight>
+        </SubIngredient>
+      </SubIngredients>
+    </Ingredient>
+    <Ingredient>
+      <Item>
+        <Weight>2.5</Weight>
         <Calc />
         <Comment />
         <AddIn>0</AddIn>
@@ -630,9 +706,9 @@ Ingredient list shows sucrose as main sugar, with eggs and butter providing fat 
         <MaxVal>0.003</MaxVal>
         <IsRecipe>0</IsRecipe>
       </Item>
-      <name>Locust bean gum</name>
+      <name>Carboxymethyl Cellulose</name>
       <category>Stabilizer</category>
-      <info />
+      <info>Also known as CMC Tylo Powder or Tylose Powder</info>
       <created>2025-09-09</created>
       <changed>2025-09-09</changed>
       <nutrientsverified>0</nutrientsverified>
@@ -682,7 +758,7 @@ Ingredient list shows sucrose as main sugar, with eggs and butter providing fat 
       <Allergens />
       <SubIngredients>
         <SubIngredient>
-          <Name>Locust bean gum</Name>
+          <Name>Carboxymethyl Cellulose</Name>
           <Amount>100</Amount>
           <Category>INGREDIENTS</Category>
           <Highlight>0</Highlight>
@@ -691,7 +767,7 @@ Ingredient list shows sucrose as main sugar, with eggs and butter providing fat 
     </Ingredient>
     <Ingredient>
       <Item>
-        <Weight>0.41</Weight>
+        <Weight>1.5</Weight>
         <Calc />
         <Comment />
         <AddIn>0</AddIn>
@@ -763,7 +839,7 @@ Ingredient list shows sucrose as main sugar, with eggs and butter providing fat 
     </Ingredient>
     <Ingredient>
       <Item>
-        <Weight>0.21</Weight>
+        <Weight>1</Weight>
         <Calc />
         <Comment />
         <AddIn>0</AddIn>
@@ -771,15 +847,87 @@ Ingredient list shows sucrose as main sugar, with eggs and butter providing fat 
         <Locked>0</Locked>
         <Scale>1</Scale>
         <MinVal>0</MinVal>
-        <MaxVal>0.003</MaxVal>
+        <MaxVal>0.01</MaxVal>
         <IsRecipe>0</IsRecipe>
       </Item>
-      <name>Kappa Carrageenan</name>
-      <category>Stabilizer</category>
+      <name>Salt</name>
+      <category>Other</category>
       <info />
       <created>2025-09-09</created>
       <changed>2025-09-09</changed>
       <nutrientsverified>0</nutrientsverified>
+      <portionsize>100</portionsize>
+      <gramperml>1.25</gramperml>
+      <energy>0</energy>
+      <water>0</water>
+      <totalfat>0</totalfat>
+      <saturatedfat>0</saturatedfat>
+      <transfat>0</transfat>
+      <cocoafat>0</cocoafat>
+      <milkfat>0</milkfat>
+      <cholesterol>0</cholesterol>
+      <sodium>0</sodium>
+      <salt>1</salt>
+      <alcohol>0</alcohol>
+      <user1>0</user1>
+      <user2>0</user2>
+      <user3>0</user3>
+      <user4>0</user4>
+      <user5>0</user5>
+      <user6>0</user6>
+      <carbohydrates>0</carbohydrates>
+      <fiber>0</fiber>
+      <totalsugars>0</totalsugars>
+      <sugar2>0</sugar2>
+      <addedsugars>0</addedsugars>
+      <polyols>0</polyols>
+      <lactose>0</lactose>
+      <protein>0</protein>
+      <vitamind>0</vitamind>
+      <calcium>0</calcium>
+      <iron>0</iron>
+      <potassium>0</potassium>
+      <othersolids>0</othersolids>
+      <cocoasolids>0</cocoasolids>
+      <totalsolids>1</totalsolids>
+      <msnf>0</msnf>
+      <stabilizers>0</stabilizers>
+      <emulsifiers>0</emulsifiers>
+      <pac>0</pac>
+      <pod>0</pod>
+      <hf>0</hf>
+      <costkg>0</costkg>
+      <amountmin>0</amountmin>
+      <amountmax>0.01</amountmax>
+      <Allergens />
+      <SubIngredients>
+        <SubIngredient>
+          <Name>Salt</Name>
+          <Amount>100</Amount>
+          <Category>INGREDIENTS</Category>
+          <Highlight>0</Highlight>
+        </SubIngredient>
+      </SubIngredients>
+    </Ingredient>
+    <Ingredient>
+      <Item>
+        <Weight>1</Weight>
+        <Calc />
+        <Comment />
+        <AddIn>0</AddIn>
+        <Infusion>0</Infusion>
+        <Locked>0</Locked>
+        <Scale>1</Scale>
+        <MinVal>0</MinVal>
+        <MaxVal>1</MaxVal>
+        <IsRecipe>0</IsRecipe>
+      </Item>
+      <name>Citric acid</name>
+      <category>Other</category>
+      <info />
+      <created>2025-09-09</created>
+      <changed>2025-09-09</changed>
+      <nutrientsverified>1</nutrientsverified>
       <portionsize>100</portionsize>
       <gramperml>0</gramperml>
       <energy>0</energy>
@@ -811,22 +959,22 @@ Ingredient list shows sucrose as main sugar, with eggs and butter providing fat 
       <calcium>0</calcium>
       <iron>0</iron>
       <potassium>0</potassium>
-      <othersolids>0</othersolids>
+      <othersolids>1</othersolids>
       <cocoasolids>0</cocoasolids>
       <totalsolids>1</totalsolids>
       <msnf>0</msnf>
-      <stabilizers>1</stabilizers>
+      <stabilizers>0</stabilizers>
       <emulsifiers>0</emulsifiers>
-      <pac>0</pac>
+      <pac>1.781662</pac>
       <pod>0</pod>
       <hf>0</hf>
       <costkg>0</costkg>
       <amountmin>0</amountmin>
-      <amountmax>0.003</amountmax>
+      <amountmax>1</amountmax>
       <Allergens />
       <SubIngredients>
         <SubIngredient>
-          <Name>Kappa Carrageenan</Name>
+          <Name>Citric acid</Name>
           <Amount>100</Amount>
           <Category>INGREDIENTS</Category>
           <Highlight>0</Highlight>
