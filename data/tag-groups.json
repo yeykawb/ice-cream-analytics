@@ -17,8 +17,27 @@
         "Adaywithmei", 
         "Iván Vázquez", 
         "Matt Adlard",
-        "Under-belly"
+        "Under-belly",
+        "Bizarfoods",
+        "Lilla Gummans Gelato"
     ]
+    },
+    {
+      "label": "Flavor",
+      "tags": [
+        "Lemon",
+        "Strawberry",
+        "Chocolate",
+        "Vanilla",
+        "Pistachio",
+        "Mango",
+        "Raspberry",
+        "Caramel",
+        "Coffee",
+        "Hazelnut",
+        "Blueberry",
+        "Peach"
+      ]
     }
   ]
 }
