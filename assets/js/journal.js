@@ -193,8 +193,9 @@ function _renderEntries(list) {
                     ${pill('Fat',   b.fat_pct  + '%')}
                     ${pill('MSNF',  b.msnf_pct + '%')}
                     ${pill('Water', b.water_pct + '%')}
-                    ${pill('PAC',   b.pac_pct   + '%')}
-                    ${pill('POD',   b.pod_pct   + '%')}
+                    ${pill('PAC',   b.pac)}
+                    ${pill('POD%',  b.pod_pct   + '%')}
+                    ${pill('POD',   b.pod)}
                     ${pill('FPD',   '−' + b.fpd_c + '°C')}
                 </div>
 
@@ -219,11 +220,14 @@ function pill(label, value) {
 
 function ingredients(rows) {
     if (!rows.length) return '';
+    const total = rows.reduce((s, r) => s + r.amount_g, 0);
     const items = rows.map(r => {
-        const g = Math.round(r.amount_g * 10) / 10;
+        const g   = Math.round(r.amount_g * 10) / 10;
+        const pct = total > 0 ? (r.amount_g / total * 100).toFixed(1) : '—';
         return `<div class="ingredient-row">
             <span class="ingredient-name">${r.ingredient_name}</span>
             <span class="ingredient-amount">${g}g</span>
+            <span class="ingredient-pct">${pct}%</span>
         </div>`;
     }).join('');
     return `

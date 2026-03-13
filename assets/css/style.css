@@ -607,11 +607,13 @@ details[open] > .journal-note-label::before {
     display: flex;
     flex-direction: column;
     margin-top: 8px;
+    max-width: 460px;
 }
 
 .ingredient-row {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    gap: 0 16px;
     align-items: baseline;
     padding: 5px 0;
     border-bottom: 1px solid var(--border);
@@ -630,6 +632,16 @@ details[open] > .journal-note-label::before {
     color: var(--text-muted);
     font-size: 12px;
     font-variant-numeric: tabular-nums;
+    text-align: right;
+}
+
+.ingredient-pct {
+    color: var(--text-muted);
+    font-size: 12px;
+    font-variant-numeric: tabular-nums;
+    text-align: right;
+    min-width: 38px;
+    opacity: 0.65;
 }
 
 /* ── Media grid + lightbox ──────────────────────────── */

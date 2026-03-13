@@ -97,8 +97,10 @@ async function _buildViews() {
             ROUND(SUM(msnf_g)  / SUM(amount_g) * 100, 1)        AS msnf_pct,
             ROUND(SUM(sugar_g) / SUM(amount_g) * 100, 1)        AS sugar_pct,
             ROUND(SUM(water_g) / SUM(amount_g) * 100, 1)        AS water_pct,
-            ROUND(SUM(pac_contrib) / SUM(amount_g) * 100, 2)    AS pac_pct,
-            ROUND(SUM(pod_contrib) / SUM(amount_g) * 100, 2)    AS pod_pct,
+            ROUND(SUM(pac_contrib) * 1000.0 / SUM(amount_g), 2)                          AS pac,
+            ROUND(SUM(pac_contrib) / SUM(amount_g) * 100, 2)                           AS pac_pct,
+            ROUND(SUM(pod_contrib) * 1000.0 / SUM(amount_g), 2)                          AS pod,
+            ROUND(SUM(pod_contrib) * 1000.0 / SUM(amount_g) / SUM(amount_g) * 100, 2) AS pod_pct,
             ROUND(SUM(pac_contrib) / SUM(amount_g) * 3.7, 2)    AS fpd_c
         FROM stg_ingredients
         GROUP BY batch_id;
@@ -117,7 +119,9 @@ async function _buildViews() {
             m.msnf_pct,
             m.sugar_pct,
             m.water_pct,
+            m.pac,
             m.pac_pct,
+            m.pod,
             m.pod_pct,
             m.fpd_c,
             e.texture_score,

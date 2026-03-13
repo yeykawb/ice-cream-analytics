@@ -10,7 +10,7 @@
   <RevisionID>72</RevisionID>
   <Revision>1</Revision>
   <CreatedDate>2026-03-08</CreatedDate>
-  <ChangedDate>2026-03-11</ChangedDate>
+  <ChangedDate>2026-03-12</ChangedDate>
   <UserID />
   <Barcode />
   <QR />
@@ -40,7 +40,7 @@
   <Ingredients>
     <Ingredient>
       <Item>
-        <Weight>420</Weight>
+        <Weight>445.5922016724651</Weight>
         <Calc />
         <Comment />
         <AddIn>0</AddIn>
@@ -112,7 +112,7 @@
     </Ingredient>
     <Ingredient>
       <Item>
-        <Weight>140</Weight>
+        <Weight>148.5307338908217</Weight>
         <Calc />
         <Comment />
         <AddIn>0</AddIn>
@@ -184,7 +184,7 @@
     </Ingredient>
     <Ingredient>
       <Item>
-        <Weight>130</Weight>
+        <Weight>137.921395755763</Weight>
         <Calc />
         <Comment />
         <AddIn>0</AddIn>
@@ -259,7 +259,7 @@ Ingredient list shows sucrose as main sugar, with eggs and butter providing fat 
     </Ingredient>
     <Ingredient>
       <Item>
-        <Weight>55</Weight>
+        <Weight>58.35135974282281</Weight>
         <Calc />
         <Comment />
         <AddIn>0</AddIn>
@@ -331,7 +331,7 @@ Ingredient list shows sucrose as main sugar, with eggs and butter providing fat 
     </Ingredient>
     <Ingredient>
       <Item>
-        <Weight>33</Weight>
+        <Weight>35.010815845693685</Weight>
         <Calc />
         <Comment />
         <AddIn>0</AddIn>
@@ -403,7 +403,7 @@ Ingredient list shows sucrose as main sugar, with eggs and butter providing fat 
     </Ingredient>
     <Ingredient>
       <Item>
-        <Weight>3</Weight>
+        <Weight>3.1828014405176077</Weight>
         <Calc />
         <Comment />
         <AddIn>0</AddIn>
@@ -475,7 +475,7 @@ Ingredient list shows sucrose as main sugar, with eggs and butter providing fat 
     </Ingredient>
     <Ingredient>
       <Item>
-        <Weight>2</Weight>
+        <Weight>2.1218676270117385</Weight>
         <Calc />
         <Comment />
         <AddIn>0</AddIn>
@@ -490,7 +490,7 @@ Ingredient list shows sucrose as main sugar, with eggs and butter providing fat 
       <category>Other</category>
       <info />
       <created>2025-09-09</created>
-      <changed>2025-09-09</changed>
+      <changed>2026-03-13</changed>
       <nutrientsverified>1</nutrientsverified>
       <portionsize>100</portionsize>
       <gramperml>0</gramperml>
@@ -547,7 +547,7 @@ Ingredient list shows sucrose as main sugar, with eggs and butter providing fat 
     </Ingredient>
     <Ingredient>
       <Item>
-        <Weight>1.05</Weight>
+        <Weight>1.1139805041811628</Weight>
         <Calc />
         <Comment />
         <AddIn>0</AddIn>
@@ -619,7 +619,7 @@ Ingredient list shows sucrose as main sugar, with eggs and butter providing fat 
     </Ingredient>
     <Ingredient>
       <Item>
-        <Weight>0.83</Weight>
+        <Weight>0.8805750652098714</Weight>
         <Calc />
         <Comment />
         <AddIn>0</AddIn>
@@ -691,7 +691,7 @@ Ingredient list shows sucrose as main sugar, with eggs and butter providing fat 
     </Ingredient>
     <Ingredient>
       <Item>
-        <Weight>0.41</Weight>
+        <Weight>0.43498286353740634</Weight>
         <Calc />
         <Comment />
         <AddIn>0</AddIn>
@@ -763,7 +763,7 @@ Ingredient list shows sucrose as main sugar, with eggs and butter providing fat 
     </Ingredient>
     <Ingredient>
       <Item>
-        <Weight>0.21</Weight>
+        <Weight>0.22279610083623252</Weight>
         <Calc />
         <Comment />
         <AddIn>0</AddIn>
