@@ -5,12 +5,15 @@
 
 import { initDB, query } from './db.js';
 
+const PAGE_SIZE = 5;
+
 let _batches    = [];
 let _ingMap     = new Map();
 let _mediaMap   = new Map();
 let _base       = '';
 let _searchText = '';
 let _activeTags = new Set();
+let _page       = 0;
 
 (async () => {
     const list    = document.getElementById('journal-list');
@@ -92,6 +95,7 @@ function _buildFilters(allTags, tagGroups, list) {
 
     searchEl.addEventListener('input', e => {
         _searchText = e.target.value.trim().toLowerCase();
+        _page = 0;
         _syncClear(clearEl, searchEl);
         _renderEntries(list);
     });
@@ -106,6 +110,7 @@ function _buildFilters(allTags, tagGroups, list) {
                 _activeTags.add(tag);
                 btn.classList.add('active');
             }
+            _page = 0;
             _syncClear(clearEl, searchEl);
             _renderEntries(list);
         });
@@ -115,6 +120,7 @@ function _buildFilters(allTags, tagGroups, list) {
         _searchText = '';
         _activeTags.clear();
         searchEl.value = '';
+        _page = 0;
         bar.querySelectorAll('.filter-tag-btn').forEach(b => b.classList.remove('active'));
         _syncClear(clearEl, searchEl);
         _renderEntries(list);
@@ -147,7 +153,22 @@ function _renderEntries(list) {
         return;
     }
 
-    filtered.forEach(b => {
+    const totalPages = Math.ceil(filtered.length / PAGE_SIZE);
+    _page = Math.min(_page, totalPages - 1);
+    const pageItems = filtered.slice(_page * PAGE_SIZE, (_page + 1) * PAGE_SIZE);
+
+    let lastMonth = null;
+
+    pageItems.forEach(b => {
+        const monthLabel = new Date(b.date).toLocaleDateString('en-SE', { year: 'numeric', month: 'long' });
+        if (monthLabel !== lastMonth) {
+            const sep = document.createElement('div');
+            sep.className = 'month-separator';
+            sep.textContent = monthLabel;
+            list.appendChild(sep);
+            lastMonth = monthLabel;
+        }
+
         const avgScore   = b.avg_score;
         const unrated    = avgScore == null;
         const scoreColor = unrated ? 'var(--text-muted)' : avgScore >= 4.5 ? '#30d158' : avgScore >= 3 ? '#ff9500' : '#ff453a';
@@ -210,6 +231,24 @@ function _renderEntries(list) {
 
         list.appendChild(entry);
     });
+
+    if (totalPages > 1) {
+        const pag = document.createElement('div');
+        pag.className = 'journal-pagination';
+        pag.innerHTML = `
+            <button class="pagination-btn" ${_page === 0 ? 'disabled' : ''} data-dir="-1">← Prev</button>
+            <span class="pagination-info">${_page + 1} / ${totalPages}</span>
+            <button class="pagination-btn" ${_page >= totalPages - 1 ? 'disabled' : ''} data-dir="1">Next →</button>
+        `;
+        pag.querySelectorAll('.pagination-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                _page += parseInt(btn.dataset.dir);
+                list.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                _renderEntries(list);
+            });
+        });
+        list.appendChild(pag);
+    }
 }
 
 // ── Helpers ─────────────────────────────────────────────
