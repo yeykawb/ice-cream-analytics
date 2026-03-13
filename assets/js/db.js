@@ -64,8 +64,11 @@ async function _loadData() {
     // Fetch and parse all RCX files in parallel
     const parsed = await Promise.all(rcxFiles.map(async filename => {
         const batchId = (filename.match(/^(B\d+)/i) || ['', filename])[1].toUpperCase();
+        // Extract date from filename: B001-2026-03-08-description.rcx
+        const dateMatch = filename.match(/^B\d+-(\d{4}-\d{2}-\d{2})-/i);
+        const date = dateMatch ? dateMatch[1] : null;
         const xmlText = await fetch(`${base}/data/rcx/${filename}`).then(r => r.text());
-        return parseRCX(batchId, xmlText);
+        return parseRCX(batchId, xmlText, date);
     }));
 
     const batches     = parsed.map(p => p.batch);

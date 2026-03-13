@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wiki — Ice Cream Analytics</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+
+    <header>
+        <div class="container header-inner">
+            <div class="site-title">🍦 <span>Ice Cream</span> Analytics</div>
+            <nav>
+                <a href="../index.html">Dashboard</a>
+                <a href="../journal/index.html">Journal</a>
+                <a href="index.html" class="active">Wiki</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <div class="page-hero">
+            <h1>Ice Cream Wiki</h1>
+            <p>Technical reference — sugars, fats, stabilizers, acids, and the science behind frozen desserts.</p>
+        </div>
+
+        <div class="wiki-layout">
+
+            <!-- Sidebar TOC -->
+            <aside class="wiki-toc">
+                <div class="wiki-toc-title">Sections</div>
+                <nav>
+                    <a href="#sugars">Sugars</a>
+                    <a href="#pac-pod">PAC &amp; POD</a>
+                    <a href="#fat">Fat</a>
+                    <a href="#sorbets">Sorbets</a>
+                    <a href="#stabilizers">Stabilizers</a>
+                    <a href="#blends">Blends</a>
+                    <a href="#emulsifiers">Emulsifiers</a>
+                    <a href="#acidity">Acidity &amp; pH</a>
+                    <a href="#overrun">Overrun &amp; Air</a>
+                </nav>
+            </aside>
+
+            <!-- Content -->
+            <div class="wiki-content">
+
+                <!-- ── Sugars ──────────────────────────────── -->
+                <section class="wiki-section" id="sugars">
+                    <div class="wiki-section-header">
+                        <h2>Sugars</h2>
+                        <p>Sugars control sweetness (POD), freezing point depression (PAC), texture, and crystal structure. Mixing different sugars lets you tune each of these independently.</p>
+                    </div>
+
+                    <div class="wiki-entries">
+
+                        <details class="wiki-entry">
+                            <summary class="wiki-entry-summary">Sucrose — the baseline</summary>
+                            <div class="wiki-entry-body">
+                                <p>Table sugar. The reference point for both PAC (1.0) and POD (1.0). Highly soluble, cheap, reliable. The backbone of most ice cream formulas. At high concentrations it can crystallize into a gritty texture (graininess), especially in sorbets.</p>
+                                <div class="wiki-props">
+                                    <div class="wiki-prop"><span>PAC</span><strong>1.0</strong></div>
+                                    <div class="wiki-prop"><span>POD</span><strong>1.0</strong></div>
+                                    <div class="wiki-prop"><span>Typical use</span><strong>10–20% of mix</strong></div>
+                                </div>
+                            </div>
+                        </details>
+
+                        <details class="wiki-entry">
+                            <summary class="wiki-entry-summary">Dextrose (Glucose) — texture & freeze point</summary>
+                            <div class="wiki-entry-body">
+                                <p>Monosaccharide. Much higher PAC than sucrose due to its lower molecular weight, meaning it depresses the freezing point significantly more per gram. This makes the ice cream softer and easier to scoop from the freezer. Its lower sweetness (POD 0.7) means you can add more without oversweetening.</p>
+                                <div class="wiki-props">
+                                    <div class="wiki-prop"><span>PAC</span><strong>1.9</strong></div>
+                                    <div class="wiki-prop"><span>POD</span><strong>0.7</strong></div>
+                                    <div class="wiki-prop"><span>Typical use</span><strong>Replace 20–40% of sucrose</strong></div>
+                                </div>
+                                <p class="wiki-note">Replacing sucrose with dextrose softens the base and reduces sweetness. Commonly used in gelato to improve scoopability at −18 °C.</p>
+                            </div>
+                        </details>
+
+                        <details class="wiki-entry">
+                            <summary class="wiki-entry-summary">Fructose — sweetness and quick melt</summary>
+                            <div class="wiki-entry-body">
+                                <p>The sweetest naturally occurring sugar (POD 1.2–1.7, depending on temperature — sweeter when cold). High PAC. Absorbs water aggressively, which can make bases hygroscopic and sticky. Enhances fruit flavors. Speeds melt rate.</p>
+                                <div class="wiki-props">
+                                    <div class="wiki-prop"><span>PAC</span><strong>1.9</strong></div>
+                                    <div class="wiki-prop"><span>POD</span><strong>1.2–1.7</strong></div>
+                                    <div class="wiki-prop"><span>Typical use</span><strong>5–10% of sucrose replacement</strong></div>
+                                </div>
+                                <p class="wiki-note">Use sparingly — too much fructose creates a sticky, quickly-melting product. Excellent in fruit sorbets where its hygroscopicity and flavor-enhancing properties shine.</p>
+                            </div>
+                        </details>
+
+                        <details class="wiki-entry">
+                            <summary class="wiki-entry-summary">Invert Sugar — smoothness and anti-crystallisation</summary>
+                            <div class="wiki-entry-body">
+                                <p>Sucrose split (hydrolysed) into equal parts glucose and fructose. Retains moisture, resists re-crystallisation, and produces very fine ice crystals. Available as a thick syrup (≈75° Brix). Common in high-end gelato bases for its anti-crystallising effect on sucrose.</p>
+                                <div class="wiki-props">
+                                    <div class="wiki-prop"><span>PAC</span><strong>~1.9</strong></div>
+                                    <div class="wiki-prop"><span>POD</span><strong>~1.2</strong></div>
+                                    <div class="wiki-prop"><span>Typical use</span><strong>5–15% of mix weight</strong></div>
+                                </div>
+                            </div>
+                        </details>
+
+                        <details class="wiki-entry">
+                            <summary class="wiki-entry-summary">Glucose Syrup (DE30 / DE60) — body and anti-crystallisation</summary>
+                            <div class="wiki-entry-body">
+                                <p>Partially hydrolysed starch. DE (Dextrose Equivalent) indicates how far hydrolysis has gone — higher DE means more sweetness and higher PAC. Low-DE syrups (DE30) add viscosity and body with minimal sweetness. High-DE syrups (DE60) behave more like dextrose. Excellent at inhibiting ice crystal growth.</p>
+                                <div class="wiki-props">
+                                    <div class="wiki-prop"><span>PAC (DE30)</span><strong>~0.5</strong></div>
+                                    <div class="wiki-prop"><span>PAC (DE60)</span><strong>~1.0</strong></div>
+                                    <div class="wiki-prop"><span>Typical use</span><strong>5–15% of mix</strong></div>
+                                </div>
+                            </div>
+                        </details>
+
+                        <details class="wiki-entry">
+                            <summary class="wiki-entry-summary">Trehalose — reduced sweetness, stability</summary>
+                            <div class="wiki-entry-body">
+                                <p>Disaccharide found naturally in fungi and insects. Extremely low sweetness (POD 0.45). Protects proteins and flavors at low temperatures. Useful for reducing sweetness in high-PAC formulas without altering freezing behavior much.</p>
+                                <div class="wiki-props">
+                                    <div class="wiki-prop"><span>PAC</span><strong>0.8</strong></div>
+                                    <div class="wiki-prop"><span>POD</span><strong>0.45</strong></div>
+                                    <div class="wiki-prop"><span>Typical use</span><strong>Replace 10–20% of sucrose</strong></div>
+                                </div>
+                            </div>
+                        </details>
+
+                        <details class="wiki-entry">
+                            <summary class="wiki-entry-summary">Lactose — milk's natural sugar</summary>
+                            <div class="wiki-entry-body">
+                                <p>Naturally present in milk (~4.5–5%). Low sweetness (POD 0.2), low PAC (0.8). The main concern is crystallisation at high concentrations — lactose crystals are perceived as sandiness. MSNF concentration should be managed to stay below the crystallisation threshold (~8–11% lactose in the water phase).</p>
+                                <div class="wiki-props">
+                                    <div class="wiki-prop"><span>PAC</span><strong>0.8</strong></div>
+                                    <div class="wiki-prop"><span>POD</span><strong>0.2</strong></div>
+                                    <div class="wiki-prop"><span>Risk</span><strong>Sandiness above 11% in water phase</strong></div>
+                                </div>
+                            </div>
+                        </details>
+
+                        <details class="wiki-entry">
+                            <summary class="wiki-entry-summary">Brix — measuring sugar concentration</summary>
+                            <div class="wiki-entry-body">
+                                <p>Brix (°Bx) is a measure of dissolved solids in a liquid — primarily sugars — expressed as grams of sucrose per 100 g of solution. 1 °Bx ≈ 1% sugar by weight. Measured with a refractometer (optical) or densitometer. A quick, reliable field check for sugar balance without running full PAC/POD calculations.</p>
+                                <p>Not all dissolved solids are sugars — acids, proteins, and minerals also register on a refractometer, so Brix is an approximation. In practice, for sugar syrups and fruit purées it is accurate enough to be the primary balance tool.</p>
+                                <div class="wiki-props">
+                                    <div class="wiki-prop"><span>Ice cream base</span><strong>~22–28 °Bx</strong></div>
+                                    <div class="wiki-prop"><span>Sorbet</span><strong>28–32 °Bx</strong></div>
+                                    <div class="wiki-prop"><span>Fruit purée (typical)</span><strong>8–18 °Bx</strong></div>
+                                    <div class="wiki-prop"><span>Glucose syrup (DE60)</span><strong>~80 °Bx</strong></div>
+                                    <div class="wiki-prop"><span>Invert sugar syrup</span><strong>~75 °Bx</strong></div>
+                                </div>
+                                <p class="wiki-note">Brix tells you total dissolved solids, not sweetness. A high-Brix sorbet built with dextrose will taste much less sweet than the same Brix built with fructose. Always cross-check Brix with POD and PAC calculations rather than relying on it alone.</p>
+                                <p class="wiki-note">Brix ≈ POD% <em>only when all sugar in the mix is sucrose</em> (POD coeff 1.0). In that case the POD formula reduces to sugar weight / total mix weight × 100 — the same thing Brix measures — so the numbers match. As soon as you mix in other sugars they diverge: 100 g dextrose in 1 kg of mix reads ~10 °Bx but contributes only ~7% POD (coeff 0.7), while 100 g fructose reads the same ~10 °Bx but contributes ~17% POD (coeff 1.7). A refractometer confirms your total sugar fraction but not your sweetness or freezing behaviour.</p>
+                                <table class="wiki-table" style="margin-top:4px">
+                                    <thead><tr><th>Brix (sorbet)</th><th>Result</th></tr></thead>
+                                    <tbody>
+                                        <tr><td>&lt; 26 °Bx</td><td>Icy, hard, difficult to scoop</td></tr>
+                                        <tr><td>28–32 °Bx</td><td>Ideal — smooth, scoopable</td></tr>
+                                        <tr><td>&gt; 33 °Bx</td><td>Soft but sticky, slow to freeze, overly sweet</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </details>
+
+                    </div>
+                </section>
+
+                <!-- ── PAC & POD ──────────────────────────── -->
+                <section class="wiki-section" id="pac-pod">
+                    <div class="wiki-section-header">
+                        <h2>PAC &amp; POD</h2>
+                        <p>The two core formulation metrics for frozen desserts. PAC governs texture and freeze point; POD governs perceived sweetness. Both are calculated relative to sucrose = 1.0.</p>
+                    </div>
+
+                    <div class="wiki-entries">
+
+                        <details class="wiki-entry">
+                            <summary class="wiki-entry-summary">PAC — Anti-Crystallisation Power</summary>
+                            <div class="wiki-entry-body">
+                                <p>PAC (Potere AntiCongelante) measures a sugar's ability to depress the freezing point and inhibit ice crystal growth, relative to sucrose. A higher PAC means more freezing point depression per gram — the mix stays softer and more scoopable at a given storage temperature.</p>
+                                <p>PAC is a colligative property — it depends on the number of dissolved molecules, not their type. Smaller molecules (monosaccharides like dextrose) have more molecules per gram than larger ones (sucrose, glucose syrup), so they depress the freezing point more aggressively.</p>
+                                <div class="wiki-props">
+                                    <div class="wiki-prop"><span>Sucrose baseline</span><strong>1.0</strong></div>
+                                    <div class="wiki-prop"><span>Dextrose</span><strong>1.9</strong></div>
+                                    <div class="wiki-prop"><span>Fructose</span><strong>1.9</strong></div>
+                                    <div class="wiki-prop"><span>Invert sugar</span><strong>~1.9</strong></div>
+                                    <div class="wiki-prop"><span>Glucose syrup DE30</span><strong>~0.5</strong></div>
+                                    <div class="wiki-prop"><span>Lactose</span><strong>0.8</strong></div>
+                                    <div class="wiki-prop"><span>Trehalose</span><strong>0.8</strong></div>
+                                </div>
+                                <div class="wiki-props">
+                                    <div class="wiki-prop"><span>Gelato target</span><strong>18–22% of mix</strong></div>
+                                    <div class="wiki-prop"><span>Ice cream target</span><strong>17–20% of mix</strong></div>
+                                    <div class="wiki-prop"><span>Sorbet target</span><strong>20–26% of mix</strong></div>
+                                </div>
+                                <p class="wiki-note">PAC% is calculated as: Σ(ingredient weight × PAC coefficient) / total mix weight × 100. Each ingredient contributes proportionally to the total PAC of the mix.</p>
+                            </div>
+                        </details>
+
+                        <details class="wiki-entry">
+                            <summary class="wiki-entry-summary">POD — Relative Sweetness</summary>
+                            <div class="wiki-entry-body">
+                                <p>POD (Potere Dolcificante) measures perceived sweetness relative to sucrose. A sucrose solution at any concentration is the reference (1.0). POD is not a colligative property — it reflects how our taste receptors respond to different sugar molecules.</p>
+                                <p>Unlike PAC, POD is somewhat temperature-dependent: fructose tastes sweeter cold than warm, which is why cold sorbet can taste more intensely sweet than the same syrup at room temperature.</p>
+                                <div class="wiki-props">
+                                    <div class="wiki-prop"><span>Sucrose baseline</span><strong>1.0</strong></div>
+                                    <div class="wiki-prop"><span>Fructose</span><strong>1.2–1.7</strong></div>
+                                    <div class="wiki-prop"><span>Dextrose</span><strong>0.7</strong></div>
+                                    <div class="wiki-prop"><span>Invert sugar</span><strong>~1.2</strong></div>
+                                    <div class="wiki-prop"><span>Lactose</span><strong>0.2</strong></div>
+                                    <div class="wiki-prop"><span>Trehalose</span><strong>0.45</strong></div>
+                                    <div class="wiki-prop"><span>Glucose syrup DE30</span><strong>~0.3</strong></div>
+                                </div>
+                                <div class="wiki-props">
+                                    <div class="wiki-prop"><span>Gelato target</span><strong>14–18% of mix</strong></div>
+                                    <div class="wiki-prop"><span>Ice cream target</span><strong>14–18% of mix</strong></div>
+                                    <div class="wiki-prop"><span>Sorbet target</span><strong>14–20% of mix</strong></div>
+                                </div>
+                                <p class="wiki-note">Cold suppresses sweetness perception. A base that tastes perfectly sweet at room temperature will taste noticeably less sweet from the freezer. Calibrate POD slightly above your target when tasting warm.</p>
+                            </div>
+                        </details>
+
+                        <details class="wiki-entry">
+                            <summary class="wiki-entry-summary">FPD — Freezing Point Depression</summary>
+                            <div class="wiki-entry-body">
+                                <p>FPD is a derived estimate of how many degrees Celsius the mix's freezing point is depressed below 0 °C. It is calculated directly from PAC:</p>
+                                <p style="font-family: monospace; background: var(--bg-raised); padding: 8px 12px; border-radius: var(--radius-sm); font-size: 13px;">FPD (°C) = PAC% × 3.7 / 100</p>
+                                <p>A higher FPD means the mix stays liquid to a lower temperature — more of the water remains unfrozen at serving temperature, giving a softer, creamier scoop. The ideal range depends on serving temperature.</p>
+                                <div class="wiki-props">
+                                    <div class="wiki-prop"><span>Gelato (served −10 to −12 °C)</span><strong>−2.0 to −2.5 °C</strong></div>
+                                    <div class="wiki-prop"><span>Ice cream (served −14 to −18 °C)</span><strong>−2.5 to −3.5 °C</strong></div>
+                                    <div class="wiki-prop"><span>Sorbet</span><strong>−2.5 to −3.5 °C</strong></div>
+                                </div>
+                                <p class="wiki-note">FPD is an approximation — it assumes all sugars behave like sucrose. Real mixes also contain salts, acids, and proteins that contribute slightly to freezing point depression, so actual FPD is marginally lower (more negative) than the formula suggests.</p>
+                            </div>
+                        </details>
+
+                        <details class="wiki-entry">
+                            <summary class="wiki-entry-summary">Balancing PAC and POD together</summary>
+                            <div class="wiki-entry-body">
+                                <p>PAC and POD are often in tension. Increasing PAC (for a softer product) can easily overshoot the sweetness target if you add more sucrose. The solution is to use sugar blends where different sugars contribute differently to each axis.</p>
+                                <table class="wiki-table">
+                                    <thead><tr><th>Goal</th><th>Move</th></tr></thead>
+                                    <tbody>
+                                        <tr><td>More softness, same sweetness</td><td>Replace some sucrose with dextrose (↑ PAC, ↓ POD — net neutral if ratio right)</td></tr>
+                                        <tr><td>Less sweetness, same softness</td><td>Replace some sucrose with trehalose or glucose syrup (↓ POD, mild ↓ PAC — compensate with dextrose)</td></tr>
+                                        <tr><td>More sweetness, same softness</td><td>Replace some dextrose with fructose (↑ POD, PAC stays similar)</td></tr>
+                                        <tr><td>Harder texture (less soft)</td><td>Replace some dextrose with glucose syrup DE30 (↓ PAC significantly)</td></tr>
+                                    </tbody>
+                                </table>
+                                <p class="wiki-note">A good starting point for gelato: 60–70% sucrose, 20–30% dextrose, 5–10% glucose syrup. Adjust from there by tracking PAC and POD against your target ranges.</p>
+                            </div>
+                        </details>
+
+                    </div>
+                </section>
+
+                <!-- ── Fat ────────────────────────────────── -->
+                <section class="wiki-section" id="fat">
+                    <div class="wiki-section-header">
+                        <h2>Fat</h2>
+                        <p>Fat is the primary carrier of flavor, responsible for creaminess, and structural support through partial coalescence during churning.</p>
+                    </div>
+
+                    <div class="wiki-entries">
+
+                        <details class="wiki-entry">
+                            <summary class="wiki-entry-summary">Role of fat in structure</summary>
+                            <div class="wiki-entry-body">
+                                <p>During churning, fat globules partially coalesce around air bubbles, forming a network that stabilises the foam. This is called <em>fat destabilisation</em> — a controlled, desirable process. Without sufficient fat, air bubbles collapse and the texture becomes icy and dense. Too much fat can result in a greasy, heavy mouthfeel.</p>
+                                <p class="wiki-note">Fat does not depress the freezing point — it is insoluble in the aqueous phase and does not contribute to PAC or FPD.</p>
+                            </div>
+                        </details>
+
+                        <details class="wiki-entry">
+                            <summary class="wiki-entry-summary">Cream & milk fat</summary>
+                            <div class="wiki-entry-body">
+                                <p>Heavy cream (35–40% fat) is the standard fat source for ice cream. Milk provides a lower-fat alternative (~3.5%) alongside MSNF. Butter can concentrate fat further. Fat from cream contributes rich dairy flavor through fat-soluble volatile compounds.</p>
+                                <div class="wiki-props">
+                                    <div class="wiki-prop"><span>Heavy cream</span><strong>35–40% fat</strong></div>
+                                    <div class="wiki-prop"><span>Whole milk</span><strong>3–4% fat</strong></div>
+                                    <div class="wiki-prop"><span>Butter</span><strong>80–84% fat</strong></div>
+                                </div>
+                            </div>
+                        </details>
+
+                        <details class="wiki-entry">
+                            <summary class="wiki-entry-summary">Egg yolk — fat and emulsification</summary>
+                            <div class="wiki-entry-body">
+                                <p>Egg yolks contain ~30% fat and ~8% lecithin, a natural emulsifier. They enrich flavor, deepen color, and improve emulsification. Pasteurisation (cooking the base) denatures yolk proteins, contributing to body. Custard-style bases use 3–6 yolks per litre.</p>
+                                <p class="wiki-note">Egg yolk lecithin improves fat dispersion and delays fat destabilisation during churning, allowing higher overrun.</p>
+                            </div>
+                        </details>
+
+                        <details class="wiki-entry">
+                            <summary class="wiki-entry-summary">Fat targets by style</summary>
+                            <div class="wiki-entry-body">
+                                <table class="wiki-table">
+                                    <thead><tr><th>Style</th><th>Fat %</th><th>Notes</th></tr></thead>
+                                    <tbody>
+                                        <tr><td>Gelato</td><td>4–9%</td><td>Lower fat → denser, served warmer</td></tr>
+                                        <tr><td>Ice cream</td><td>10–18%</td><td>Higher fat → creamier, more overrun</td></tr>
+                                        <tr><td>Soft serve</td><td>3–6%</td><td>Served at −6 °C, served straight from machine</td></tr>
+                                        <tr><td>Sorbet</td><td>0%</td><td>No fat — structure from syrup and ice</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </details>
+
+                        <details class="wiki-entry">
+                            <summary class="wiki-entry-summary">Coconut fat — non-dairy alternative</summary>
+                            <div class="wiki-entry-body">
+                                <p>Coconut cream/fat (~22–28% fat) is the standard non-dairy fat source. High in saturated fat — similar partial coalescence behaviour to dairy. Contributes a distinct coconut flavor, which can be desirable or masked depending on the recipe. Coconut oil (100% fat) is sometimes added in small amounts to boost fat percentage.</p>
+                            </div>
+                        </details>
+
+                    </div>
+                </section>
+
+                <!-- ── Sorbets ─────────────────────────────── -->
+                <section class="wiki-section" id="sorbets">
+                    <div class="wiki-section-header">
+                        <h2>Sorbets</h2>
+                        <p>Sorbets contain no dairy fat. Structure comes entirely from ice crystals, a concentrated sugar syrup, and stabilizers. This makes formulation — especially PAC balance — critical.</p>
+                    </div>
+
+                    <div class="wiki-entries">
+
+                        <details class="wiki-entry">
+                            <summary class="wiki-entry-summary">Sugar balance in sorbets</summary>
+                            <div class="wiki-entry-body">
+                                <p>Without fat to soften texture, sorbets rely on PAC-balanced sugar blends. A Brix reading of 28–32° in the final mix is typical. Higher Brix = softer but sweeter. Lower Brix = icier and harder. Mixing sucrose with dextrose or glucose syrup allows you to hit the Brix target while softening the freeze.</p>
+                                <div class="wiki-props">
+                                    <div class="wiki-prop"><span>Target Brix</span><strong>28–32°</strong></div>
+                                    <div class="wiki-prop"><span>Target PAC</span><strong>20–26%</strong></div>
+                                </div>
+                            </div>
+                        </details>
+
+                        <details class="wiki-entry">
+                            <summary class="wiki-entry-summary">Inulin — body without fat</summary>
+                            <div class="wiki-entry-body">
+                                <p>Inulin is a soluble dietary fiber (fructo-oligosaccharide) derived from chicory root. In sorbets, it mimics the mouthfeel of fat — adding creaminess, body, and a clean finish. It has very low sweetness (POD ~0.1) and does not ferment to produce off-flavors at typical sorbet doses.</p>
+                                <div class="wiki-props">
+                                    <div class="wiki-prop"><span>POD</span><strong>~0.1</strong></div>
+                                    <div class="wiki-prop"><span>Typical dose</span><strong>3–8% of mix</strong></div>
+                                    <div class="wiki-prop"><span>Effect</span><strong>Body, creaminess, fat-mimic</strong></div>
+                                </div>
+                                <p class="wiki-note">Inulin forms a gel-like network when hydrated, contributing a noticeable body improvement in low-fat or fat-free products.</p>
+                            </div>
+                        </details>
+
+                        <details class="wiki-entry">
+                            <summary class="wiki-entry-summary">Natural fruit pectins</summary>
+                            <div class="wiki-entry-body">
+                                <p>Many fruits naturally contain pectin, which provides some structure in fruit sorbets at no cost. High-pectin fruits (citrus pith, quince, apple) contribute measurable viscosity to a sorbet base. This is part of why citrus-based sorbets often have better body than, say, strawberry.</p>
+                            </div>
+                        </details>
+
+                        <details class="wiki-entry">
+                            <summary class="wiki-entry-summary">Stabilizers in sorbets</summary>
+                            <div class="wiki-entry-body">
+                                <p>Without fat and proteins to buffer ice crystal growth, sorbets need stabilizers even more than ice cream. Common choices:</p>
+                                <ul class="wiki-list">
+                                    <li><strong>LBG + Guar blend</strong> — synergistic, improves body and slows recrystallisation</li>
+                                    <li><strong>Xanthan gum</strong> — strong at very low doses, keeps sorbet smooth after temperature fluctuation</li>
+                                    <li><strong>Pectin (HM or LM)</strong> — natural, works well with acidic fruit bases</li>
+                                    <li><strong>CMC</strong> — good water-holding, cost-effective</li>
+                                </ul>
+                                <p class="wiki-note">Stabilizers should be dispersed in a portion of the sugar before adding to liquid, to prevent clumping.</p>
+                            </div>
+                        </details>
+
+                    </div>
+                </section>
+
+                <!-- ── Stabilizers ────────────────────────── -->
+                <section class="wiki-section" id="stabilizers">
+                    <div class="wiki-section-header">
+                        <h2>Stabilizers</h2>
+                        <p>Stabilizers control ice crystal growth, improve body, hold water, and extend shelf life. Most work by immobilising free water in the unfrozen phase. Synergistic blends are common.</p>
+                    </div>
+
+                    <div class="wiki-entries">
+
+                        <details class="wiki-entry">
+                            <summary class="wiki-entry-summary">Locust Bean Gum (LBG) — the gold standard</summary>
+                            <div class="wiki-entry-body">
+                                <p>Derived from carob seeds (Ceratonia siliqua). Requires heating to ~85 °C to fully hydrate. The benchmark stabilizer in premium gelato — strongly inhibits ice crystal growth and recrystallisation. Strongly synergistic with carrageenan and xanthan.</p>
+                                <div class="wiki-props">
+                                    <div class="wiki-prop"><span>Source</span><strong>Carob seeds</strong></div>
+                                    <div class="wiki-prop"><span>Dose</span><strong>0.1–0.25%</strong></div>
+                                    <div class="wiki-prop"><span>Hydration</span><strong>Needs 80–85 °C</strong></div>
+                                </div>
+                                <p class="wiki-note">If LBG isn't fully hydrated, it leaves undissolved specs and reduced effectiveness. Always heat the mix past 80 °C when using LBG.</p>
+                            </div>
+                        </details>
+
+                        <details class="wiki-entry">
+                            <summary class="wiki-entry-summary">Guar Gum — affordable and immediate</summary>
+                            <div class="wiki-entry-body">
+                                <p>From guar beans (Cyamopsis tetragonoloba). Hydrates in cold water — no heating required. Provides thickening at twice the concentration needed for LBG. Less effective at preventing recrystallisation than LBG. Often blended with LBG to reduce cost while maintaining cold-hydration capability.</p>
+                                <div class="wiki-props">
+                                    <div class="wiki-prop"><span>Source</span><strong>Guar beans</strong></div>
+                                    <div class="wiki-prop"><span>Dose</span><strong>0.05–0.2%</strong></div>
+                                    <div class="wiki-prop"><span>Hydration</span><strong>Cold water</strong></div>
+                                </div>
+                            </div>
+                        </details>
+
+                        <details class="wiki-entry">
+                            <summary class="wiki-entry-summary">Xanthan Gum — powerful at low doses</summary>
+                            <div class="wiki-entry-body">
+                                <p>Produced by fermentation (Xanthomonas campestris). Extremely high viscosity at very low concentrations. Pseudoplastic (shear-thinning) — feels thin when eaten, thick when still. Excellent for sorbets and non-dairy applications. Synergistic with LBG and guar.</p>
+                                <div class="wiki-props">
+                                    <div class="wiki-prop"><span>Source</span><strong>Microbial fermentation</strong></div>
+                                    <div class="wiki-prop"><span>Dose</span><strong>0.02–0.1%</strong></div>
+                                    <div class="wiki-prop"><span>Hydration</span><strong>Cold or hot water</strong></div>
+                                </div>
+                                <p class="wiki-note">Overuse gives a slimy mouthfeel. Start conservatively — 0.03% is often enough when paired with other hydrocolloids.</p>
+                            </div>
+                        </details>
+
+                        <details class="wiki-entry">
+                            <summary class="wiki-entry-summary">κ-Carrageenan (Kappa) — firm gel, dairy synergy</summary>
+                            <div class="wiki-entry-body">
+                                <p>Extracted from red seaweed (Kappaphycus alvarezii). Forms a firm, brittle gel in the presence of potassium ions (K⁺) and interacts with κ-casein micelles in dairy — strengthening the network and improving body. Strongly synergistic with LBG; together they produce a smoother, more elastic gel than either alone. Used at very low doses. Largely ineffective in non-dairy mixes with no casein.</p>
+                                <div class="wiki-props">
+                                    <div class="wiki-prop"><span>Source</span><strong>Red seaweed</strong></div>
+                                    <div class="wiki-prop"><span>Dose</span><strong>0.01–0.03%</strong></div>
+                                    <div class="wiki-prop"><span>Gel type</span><strong>Firm, brittle</strong></div>
+                                    <div class="wiki-prop"><span>Dairy synergy</span><strong>Strong (κ-casein interaction)</strong></div>
+                                    <div class="wiki-prop"><span>Hydration</span><strong>70–80 °C</strong></div>
+                                </div>
+                                <p class="wiki-note">The synergy with LBG is the main reason commercial ice cream blends use both together — LBG converts the brittle kappa gel into a softer, more elastic, cohesive texture.</p>
+                            </div>
+                        </details>
+
+                        <details class="wiki-entry">
+                            <summary class="wiki-entry-summary">ι-Carrageenan (Iota) — soft elastic gel</summary>
+                            <div class="wiki-entry-body">
+                                <p>Extracted from Eucheuma denticulatum. Forms a soft, elastic, thixotropic gel in the presence of calcium ions (Ca²⁺). Unlike kappa, the iota gel does not synerese (weep liquid) and reforms after shearing — making it well suited to frozen applications where freeze-thaw stability matters. Less brittle than kappa, milder dairy interaction.</p>
+                                <div class="wiki-props">
+                                    <div class="wiki-prop"><span>Source</span><strong>Red seaweed</strong></div>
+                                    <div class="wiki-prop"><span>Dose</span><strong>0.05–0.2%</strong></div>
+                                    <div class="wiki-prop"><span>Gel type</span><strong>Soft, elastic, thixotropic</strong></div>
+                                    <div class="wiki-prop"><span>Needs</span><strong>Ca²⁺ to gel</strong></div>
+                                    <div class="wiki-prop"><span>Hydration</span><strong>70–80 °C</strong></div>
+                                </div>
+                                <p class="wiki-note">Iota is less common in standard ice cream but useful in products with higher calcium content (yogurt-based, calcium-fortified) or where you want a stable, non-syneresing gel with good freeze-thaw resilience.</p>
+                            </div>
+                        </details>
+
+                        <details class="wiki-entry">
+                            <summary class="wiki-entry-summary">λ-Carrageenan (Lambda) — no gel, pure thickening</summary>
+                            <div class="wiki-entry-body">
+                                <p>Unlike kappa and iota, lambda carrageenan does <em>not</em> form a gel. It is a non-gelling thickener and viscosity builder that is effective in both hot and cold water without ions. This makes it uniquely useful in ice cream: it thickens the liquid mix at all temperatures and contributes a rich, custardy mouthfeel to the melted product, without adding gel structure that could make the frozen texture gummy.</p>
+                                <div class="wiki-props">
+                                    <div class="wiki-prop"><span>Source</span><strong>Red seaweed</strong></div>
+                                    <div class="wiki-prop"><span>Dose</span><strong>0.02–0.1%</strong></div>
+                                    <div class="wiki-prop"><span>Gel type</span><strong>None — thickener only</strong></div>
+                                    <div class="wiki-prop"><span>Hydration</span><strong>Cold or hot water</strong></div>
+                                </div>
+                                <p class="wiki-note">Lambda is the carrageenan of choice in artisan ice cream blends (like the Underbelly general-purpose formula) because it enriches the melt without stiffening the frozen body. If the melted ice cream feels thin or watery, a small addition of lambda is the targeted fix.</p>
+                            </div>
+                        </details>
+
+                        <details class="wiki-entry">
+                            <summary class="wiki-entry-summary">CMC (Carboxymethyl Cellulose) — body and water binding</summary>
+                            <div class="wiki-entry-body">
+                                <p>A modified cellulose derivative. Excellent at binding free water and preventing ice crystal growth. Provides a clean, neutral mouthfeel. Often used as a cost-effective component in stabilizer blends for bulk ice cream. Cold-soluble.</p>
+                                <div class="wiki-props">
+                                    <div class="wiki-prop"><span>Source</span><strong>Cellulose (modified)</strong></div>
+                                    <div class="wiki-prop"><span>Dose</span><strong>0.1–0.3%</strong></div>
+                                    <div class="wiki-prop"><span>Hydration</span><strong>Cold water</strong></div>
+                                </div>
+                            </div>
+                        </details>
+
+                        <details class="wiki-entry">
+                            <summary class="wiki-entry-summary">Pectin — natural, acid-friendly</summary>
+                            <div class="wiki-entry-body">
+                                <p>Extracted from apple or citrus peel. High-Methoxyl (HM) pectin gels in acidic, high-sugar environments (ideal for fruit sorbets). Low-Methoxyl (LM) pectin gels with calcium ions — useful in low-sugar or dairy applications. Contributes a clean, fruity texture.</p>
+                                <div class="wiki-props">
+                                    <div class="wiki-prop"><span>HM Pectin</span><strong>Needs pH &lt; 3.5 + sugar &gt; 55%</strong></div>
+                                    <div class="wiki-prop"><span>LM Pectin</span><strong>Needs Ca²⁺, works at low sugar</strong></div>
+                                    <div class="wiki-prop"><span>Dose</span><strong>0.1–0.5%</strong></div>
+                                </div>
+                            </div>
+                        </details>
+
+                        <details class="wiki-entry">
+                            <summary class="wiki-entry-summary">Gelatin — smooth melt, classic texture</summary>
+                            <div class="wiki-entry-body">
+                                <p>Animal-derived protein (collagen hydrolysate). Forms a heat-reversible gel that melts at body temperature — contributing a smooth, slow-melt sensation. One of the oldest ice cream stabilizers. Not suitable for vegetarian/vegan products.</p>
+                                <div class="wiki-props">
+                                    <div class="wiki-prop"><span>Source</span><strong>Animal collagen</strong></div>
+                                    <div class="wiki-prop"><span>Dose</span><strong>0.2–0.5%</strong></div>
+                                    <div class="wiki-prop"><span>Melt temp</span><strong>~35 °C (body temp)</strong></div>
+                                </div>
+                            </div>
+                        </details>
+
+                        <details class="wiki-entry">
+                            <summary class="wiki-entry-summary">Tara Gum — LBG alternative</summary>
+                            <div class="wiki-entry-body">
+                                <p>From the tara plant (Caesalpinia spinosa). Similar galactomannan structure to LBG but with a higher mannose-to-galactose ratio. More neutral flavor than LBG. Slightly more soluble at lower temperatures. A premium LBG substitute.</p>
+                                <div class="wiki-props">
+                                    <div class="wiki-prop"><span>Dose</span><strong>0.05–0.2%</strong></div>
+                                    <div class="wiki-prop"><span>Hydration</span><strong>80 °C</strong></div>
+                                </div>
+                            </div>
+                        </details>
+
+                    </div>
+                </section>
+
+                <!-- ── Stabilizer Blends ─────────────────── -->
+                <section class="wiki-section" id="blends">
+                    <div class="wiki-section-header">
+                        <h2>Stabilizer Blends</h2>
+                        <p>Practical starting-point formulas with ratios and per-litre doses. Stabilizers are most effective in synergistic combinations — no single gum does everything well.</p>
+                    </div>
+
+                    <div class="wiki-entries">
+
+                        <details class="wiki-entry">
+                            <summary class="wiki-entry-summary">Gelatin + Xanthan — dairy ice cream <span class="wiki-entry-ratio">3:1</span></summary>
+                            <div class="wiki-entry-body">
+                                <div class="wiki-blend-header">
+                                    <div class="wiki-blend-ratio">
+                                        <div class="wiki-blend-part"><span class="wiki-blend-name">Gelatin</span><span class="wiki-blend-num">3</span></div>
+                                        <div class="wiki-blend-sep">:</div>
+                                        <div class="wiki-blend-part"><span class="wiki-blend-name">Xanthan</span><span class="wiki-blend-num">1</span></div>
+                                    </div>
+                                    <div class="wiki-blend-dose">1 g gelatin · 0.33 g xanthan per litre <span class="wiki-blend-pct">(0.15% total)</span></div>
+                                </div>
+                                <p>Gelatin hydrates when cooked to 60 °C — any standard cooking step handles this. Both suppress ice crystals and increase viscosity.</p>
+                                <p>The gelatin forms a weak gel that melts at body temperature and strengthens in the cold, so its effect is most pronounced in the frozen state. Xanthan's activity is nearly temperature-independent — its effect is most pronounced in the melted state.</p>
+                                <ul class="wiki-list">
+                                    <li>More gelatin → more body in the frozen product</li>
+                                    <li>More xanthan → creamier melt</li>
+                                </ul>
+                                <p class="wiki-note">At much higher concentrations xanthan goes from creamy to slimy. If this blend at modest doses isn't giving results, move to a gum-based blend rather than increasing xanthan.</p>
+                            </div>
+                        </details>
+
+                        <details class="wiki-entry">
+                            <summary class="wiki-entry-summary">LBG + Guar + λ-Carrageenan — gelato <span class="wiki-entry-ratio">4:2:1</span></summary>
+                            <div class="wiki-entry-body">
+                                <div class="wiki-blend-header">
+                                    <div class="wiki-blend-ratio">
+                                        <div class="wiki-blend-part"><span class="wiki-blend-name">LBG</span><span class="wiki-blend-num">4</span></div>
+                                        <div class="wiki-blend-sep">:</div>
+                                        <div class="wiki-blend-part"><span class="wiki-blend-name">Guar</span><span class="wiki-blend-num">2</span></div>
+                                        <div class="wiki-blend-sep">:</div>
+                                        <div class="wiki-blend-part"><span class="wiki-blend-name">λ-Carrageenan</span><span class="wiki-blend-num">1</span></div>
+                                    </div>
+                                    <div class="wiki-blend-dose">0.8 g · 0.4 g · 0.2 g per litre <span class="wiki-blend-pct">(0.15% total at 15% fat with 2 yolks/L)</span></div>
+                                </div>
+                                <p>Must be cooked past the hydration temperature of LBG (most brands need 80–85 °C; some specialist gums hydrate at 74 °C).</p>
+                                <ul class="wiki-list">
+                                    <li><strong>LBG</strong> — most powerful ice crystal suppression; subtle body and melt creaminess</li>
+                                    <li><strong>Guar</strong> — amplifies LBG; strongest effect on frozen body. Too much → chewy, elastic texture</li>
+                                    <li><strong>λ-Carrageenan</strong> — enriches the melt with a custardy character. If the melt feels thin, add a little more here</li>
+                                </ul>
+                                <p class="wiki-note">Use at 0.1% for rich custard bases. Go up to 0.25% for lighter mixes or those needing longer shelf life. Source: Underbelly.</p>
+                            </div>
+                        </details>
+
+                        <details class="wiki-entry">
+                            <summary class="wiki-entry-summary">Lecithin + LBG + Guar + λ-Carrageenan — eggless ice cream <span class="wiki-entry-ratio">4:4:2:1</span></summary>
+                            <div class="wiki-entry-body">
+                                <div class="wiki-blend-header">
+                                    <div class="wiki-blend-ratio">
+                                        <div class="wiki-blend-part"><span class="wiki-blend-name">Soy Lecithin</span><span class="wiki-blend-num">4</span></div>
+                                        <div class="wiki-blend-sep">:</div>
+                                        <div class="wiki-blend-part"><span class="wiki-blend-name">LBG</span><span class="wiki-blend-num">4</span></div>
+                                        <div class="wiki-blend-sep">:</div>
+                                        <div class="wiki-blend-part"><span class="wiki-blend-name">Guar</span><span class="wiki-blend-num">2</span></div>
+                                        <div class="wiki-blend-sep">:</div>
+                                        <div class="wiki-blend-part"><span class="wiki-blend-name">λ-Carrageenan</span><span class="wiki-blend-num">1</span></div>
+                                    </div>
+                                    <div class="wiki-blend-dose">1 g · 1 g · 0.5 g · 0.25 g per litre <span class="wiki-blend-pct">(0.25% total)</span></div>
+                                </div>
+                                <p>Same as Blend 2, but with guar and carrageenan increased to compensate for the loss of egg yolk's thickening and stabilising proteins. Lecithin (1 g ≈ 1 large yolk) replaces the emulsification role of the yolk.</p>
+                                <p class="wiki-note">Don't over-add lecithin — too much will actually impede whipping and reduce overrun. Source: Underbelly.</p>
+                            </div>
+                        </details>
+
+                        <details class="wiki-entry">
+                            <summary class="wiki-entry-summary">CMC + Guar + λ-Carrageenan — sorbet <span class="wiki-entry-ratio">2:1:1</span></summary>
+                            <div class="wiki-entry-body">
+                                <div class="wiki-blend-header">
+                                    <div class="wiki-blend-ratio">
+                                        <div class="wiki-blend-part"><span class="wiki-blend-name">CMC</span><span class="wiki-blend-num">2</span></div>
+                                        <div class="wiki-blend-sep">:</div>
+                                        <div class="wiki-blend-part"><span class="wiki-blend-name">Guar</span><span class="wiki-blend-num">1</span></div>
+                                        <div class="wiki-blend-sep">:</div>
+                                        <div class="wiki-blend-part"><span class="wiki-blend-name">λ-Carrageenan</span><span class="wiki-blend-num">1</span></div>
+                                    </div>
+                                    <div class="wiki-blend-dose">2 g · 1 g · 1 g per litre <span class="wiki-blend-pct">(0.5% water weight)</span></div>
+                                </div>
+                                <p>Requires no cooking — cold hydration. Blend dry into the fruit purée, chill, then spin. No separate syrup needed.</p>
+                                <ul class="wiki-list">
+                                    <li><strong>CMC</strong> — star ingredient for sorbets. Strong ice crystal suppression, cold-soluble, clean mouthfeel</li>
+                                    <li><strong>Guar</strong> — adds body and elasticity, amplifies CMC</li>
+                                    <li><strong>λ-Carrageenan</strong> — enriches the melted texture</li>
+                                </ul>
+                                <p class="wiki-note">For sorbets with fat (chocolate, nut butters, olive oil), add ~1 g/L lecithin for smoother emulsification. Source: Underbelly.</p>
+                            </div>
+                        </details>
+
+                        <details class="wiki-entry">
+                            <summary class="wiki-entry-summary">LBG + Guar + κ-Carrageenan — gelato <span class="wiki-entry-ratio">2:1:0.5</span></summary>
+                            <div class="wiki-entry-body">
+                                <div class="wiki-blend-header">
+                                    <div class="wiki-blend-ratio">
+                                        <div class="wiki-blend-part"><span class="wiki-blend-name">LBG</span><span class="wiki-blend-num">2</span></div>
+                                        <div class="wiki-blend-sep">:</div>
+                                        <div class="wiki-blend-part"><span class="wiki-blend-name">Guar</span><span class="wiki-blend-num">1</span></div>
+                                        <div class="wiki-blend-sep">:</div>
+                                        <div class="wiki-blend-part"><span class="wiki-blend-name">κ-Carrageenan</span><span class="wiki-blend-num">0.5</span></div>
+                                    </div>
+                                </div>
+                                <p>A dairy-focused gelato blend. The κ-carrageenan interacts directly with casein proteins to strengthen body, while LBG + Guar provide the primary ice crystal control. The kappa-LBG synergy produces a smoother, more elastic gel than either alone.</p>
+                            </div>
+                        </details>
+
+                        <details class="wiki-entry">
+                            <summary class="wiki-entry-summary">CMC + Guar — sorbet <span class="wiki-entry-ratio">2:1</span></summary>
+                            <div class="wiki-entry-body">
+                                <div class="wiki-blend-header">
+                                    <div class="wiki-blend-ratio">
+                                        <div class="wiki-blend-part"><span class="wiki-blend-name">CMC</span><span class="wiki-blend-num">2</span></div>
+                                        <div class="wiki-blend-sep">:</div>
+                                        <div class="wiki-blend-part"><span class="wiki-blend-name">Guar</span><span class="wiki-blend-num">1</span></div>
+                                    </div>
+                                </div>
+                                <p>A minimal cold-process sorbet stabiliser. CMC handles ice crystal suppression and water binding; guar adds body and amplifies the CMC effect. Cold-soluble — no cooking required, blend directly into the base.</p>
+                            </div>
+                        </details>
+
+                    </div>
+                </section>
+
+                <!-- ── Emulsifiers ────────────────────────── -->
+                <section class="wiki-section" id="emulsifiers">
+                    <div class="wiki-section-header">
+                        <h2>Emulsifiers</h2>
+                        <p>Emulsifiers help disperse fat in water, support partial coalescence during churning, and improve overrun and texture stability.</p>
+                    </div>
+
+                    <div class="wiki-entries">
+
+                        <details class="wiki-entry">
+                            <summary class="wiki-entry-summary">Lecithin — the natural option</summary>
+                            <div class="wiki-entry-body">
+                                <p>Present naturally in egg yolk (8–10%) and soy/sunflower. Phospholipid structure with both hydrophilic and lipophilic ends. Promotes fat dispersion and delays fat destabilisation. Soy lecithin is the most common commercial form — it's also an antioxidant.</p>
+                                <div class="wiki-props">
+                                    <div class="wiki-prop"><span>Dose (added)</span><strong>0.1–0.3%</strong></div>
+                                    <div class="wiki-prop"><span>In egg yolk</span><strong>Naturally present</strong></div>
+                                </div>
+                            </div>
+                        </details>
+
+                        <details class="wiki-entry">
+                            <summary class="wiki-entry-summary">Mono- and Diglycerides (MDG) — overrun support</summary>
+                            <div class="wiki-entry-body">
+                                <p>Partial glycerides of fatty acids, derived from vegetable or animal fat. Promote <em>fat destabilisation</em> during freezing — they displace proteins from fat globule surfaces, enabling partial coalescence. This gives better overrun, a dryer texture, and improved shape retention. Standard in commercial American-style ice cream.</p>
+                                <div class="wiki-props">
+                                    <div class="wiki-prop"><span>Dose</span><strong>0.1–0.2%</strong></div>
+                                    <div class="wiki-prop"><span>Effect</span><strong>Higher overrun, firmer shape</strong></div>
+                                </div>
+                            </div>
+                        </details>
+
+                        <details class="wiki-entry">
+                            <summary class="wiki-entry-summary">Polysorbate 80 (PS80) — aggressive fat destabilisation</summary>
+                            <div class="wiki-entry-body">
+                                <p>Synthetic emulsifier (polyoxyethylene sorbitan mono-oleate). Very effective at promoting fat destabilisation and maximising overrun. Commonly combined with MDG. A staple of commercial soft-serve and bulk ice cream. Less common in artisanal/premium gelato.</p>
+                                <div class="wiki-props">
+                                    <div class="wiki-prop"><span>Dose</span><strong>0.02–0.1%</strong></div>
+                                    <div class="wiki-prop"><span>Effect</span><strong>Max overrun, foam stability</strong></div>
+                                </div>
+                            </div>
+                        </details>
+
+                    </div>
+                </section>
+
+                <!-- ── Acidity ─────────────────────────────── -->
+                <section class="wiki-section" id="acidity">
+                    <div class="wiki-section-header">
+                        <h2>Acidity &amp; pH</h2>
+                        <p>Acid affects dairy protein stability, flavor perception, stabilizer behaviour, and microbial safety. In sorbets, it's a primary flavor tool.</p>
+                    </div>
+
+                    <div class="wiki-entries">
+
+                        <details class="wiki-entry">
+                            <summary class="wiki-entry-summary">pH in dairy bases</summary>
+                            <div class="wiki-entry-body">
+                                <p>Fresh milk has a pH of ~6.6–6.8. Ice cream bases are typically pH 6.2–6.8. Casein micelles are stable in this range. If pH drops below ~5.5, casein proteins begin to destabilise. At the isoelectric point of casein (~pH 4.6), proteins precipitate entirely — this is what makes yogurt and soft cheese firm.</p>
+                                <p class="wiki-note">Adding acid directly to a hot dairy base risks curdling. Always add acid to cooled bases, and never exceed small amounts without testing first.</p>
+                            </div>
+                        </details>
+
+                        <details class="wiki-entry">
+                            <summary class="wiki-entry-summary">Citric Acid — sharp and clean</summary>
+                            <div class="wiki-entry-body">
+                                <p>The most common food acid. Triprotic — provides a sharp, bright acidity. Naturally present in citrus fruits. Used to acidify sorbets, boost citrus flavor, inhibit enzymatic browning, and extend shelf life. Dissolves readily in water.</p>
+                                <div class="wiki-props">
+                                    <div class="wiki-prop"><span>Flavour profile</span><strong>Sharp, clean, citrus</strong></div>
+                                    <div class="wiki-prop"><span>Typical sorbet dose</span><strong>0.1–0.5%</strong></div>
+                                    <div class="wiki-prop"><span>Also acts as</span><strong>Antioxidant, preservative</strong></div>
+                                </div>
+                            </div>
+                        </details>
+
+                        <details class="wiki-entry">
+                            <summary class="wiki-entry-summary">Malic Acid — soft and lingering</summary>
+                            <div class="wiki-entry-body">
+                                <p>Found naturally in apples and many stone fruits. Diprotic acid. Softer onset than citric — the sourness builds more slowly and lingers longer. Excellent in apple, pear, cherry, and stone fruit sorbets. Commonly blended with citric for a more complex acidity.</p>
+                                <div class="wiki-props">
+                                    <div class="wiki-prop"><span>Flavour profile</span><strong>Soft, apple-like, lingering</strong></div>
+                                    <div class="wiki-prop"><span>Typical dose</span><strong>0.1–0.4%</strong></div>
+                                </div>
+                            </div>
+                        </details>
+
+                        <details class="wiki-entry">
+                            <summary class="wiki-entry-summary">Tartaric Acid — grip and persistence</summary>
+                            <div class="wiki-entry-body">
+                                <p>Characteristic acid of grapes and wine. Diprotic. Provides a firm, persistent sourness with an almost astringent edge. Used in grape and wine-flavoured sorbets, and occasionally in combinations for complexity.</p>
+                                <div class="wiki-props">
+                                    <div class="wiki-prop"><span>Flavour profile</span><strong>Sharp, persistent, astringent</strong></div>
+                                    <div class="wiki-prop"><span>Typical dose</span><strong>0.05–0.2%</strong></div>
+                                </div>
+                            </div>
+                        </details>
+
+                        <details class="wiki-entry">
+                            <summary class="wiki-entry-summary">Lactic Acid — fermented and mild</summary>
+                            <div class="wiki-entry-body">
+                                <p>Naturally produced in fermented dairy (yogurt, buttermilk) and fermented fruits. Mono-protic. Very mild, rounded acidity — almost dairy-adjacent in character. Less common as an additive but relevant in cultured cream or yogurt-based ice creams. Also used as a pH adjustor in small amounts.</p>
+                                <div class="wiki-props">
+                                    <div class="wiki-prop"><span>Flavour profile</span><strong>Mild, rounded, dairy-like</strong></div>
+                                    <div class="wiki-prop"><span>Typical dose</span><strong>0.05–0.2%</strong></div>
+                                </div>
+                            </div>
+                        </details>
+
+                        <details class="wiki-entry">
+                            <summary class="wiki-entry-summary">Acid and stabilizer interactions</summary>
+                            <div class="wiki-entry-body">
+                                <p>pH strongly affects how stabilizers behave:</p>
+                                <ul class="wiki-list">
+                                    <li><strong>HM Pectin</strong> only gels below pH 3.5 in high-sugar environments</li>
+                                    <li><strong>Carrageenan</strong> degrades faster at low pH — avoid in acidic (pH &lt; 4) applications</li>
+                                    <li><strong>Gelatin</strong> weakens at low pH — less effective in acidic sorbets</li>
+                                    <li><strong>LBG, Guar, Xanthan</strong> are generally stable across pH 3–9</li>
+                                </ul>
+                            </div>
+                        </details>
+
+                        <details class="wiki-entry">
+                            <summary class="wiki-entry-summary">Acidity perception in frozen products</summary>
+                            <div class="wiki-entry-body">
+                                <p>Cold temperature suppresses the perception of sourness. A sorbet that tastes perfectly balanced at room temperature will taste noticeably less sharp from the freezer. As a rule, sorbet bases should taste slightly more acidic than you'd want in the final product. The same principle applies — mildly — to sweetness and most other flavors.</p>
+                            </div>
+                        </details>
+
+                    </div>
+                </section>
+
+                <!-- ── Overrun ─────────────────────────────── -->
+                <section class="wiki-section" id="overrun">
+                    <div class="wiki-section-header">
+                        <h2>Overrun &amp; Air</h2>
+                        <p>Overrun is the percentage increase in volume due to incorporated air. It profoundly affects texture, density, perceived richness, and melt rate.</p>
+                    </div>
+
+                    <div class="wiki-entries">
+
+                        <details class="wiki-entry">
+                            <summary class="wiki-entry-summary">What is overrun?</summary>
+                            <div class="wiki-entry-body">
+                                <p>Overrun % = (volume out − volume in) / volume in × 100. A mix that doubles in volume has 100% overrun. Commercial ice cream often exceeds 100% by legal minimum; premium gelato targets 20–35%. Higher overrun = lower density = lighter, cheaper product.</p>
+                                <table class="wiki-table">
+                                    <thead><tr><th>Style</th><th>Typical Overrun</th></tr></thead>
+                                    <tbody>
+                                        <tr><td>Premium gelato</td><td>20–35%</td></tr>
+                                        <tr><td>Artisan ice cream</td><td>50–80%</td></tr>
+                                        <tr><td>Commercial ice cream</td><td>80–100%</td></tr>
+                                        <tr><td>Sorbet</td><td>10–30%</td></tr>
+                                        <tr><td>Soft serve</td><td>30–50%</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </details>
+
+                        <details class="wiki-entry">
+                            <summary class="wiki-entry-summary">What supports high overrun?</summary>
+                            <div class="wiki-entry-body">
+                                <p>Air incorporation is stabilised by the fat network built during churning. Higher fat and effective emulsifiers (MDG, PS80) allow more air to be trapped. Stabilizers prevent the air cells from collapsing during hardening. Low-fat or non-dairy bases typically have lower maximum overrun.</p>
+                                <ul class="wiki-list">
+                                    <li>Higher fat % → better foam stabilisation</li>
+                                    <li>MDG / PS80 → promotes fat destabilisation → better foam scaffold</li>
+                                    <li>Optimal churning speed and temperature</li>
+                                    <li>Stabilizer blend that holds structure during hardening</li>
+                                </ul>
+                            </div>
+                        </details>
+
+                        <details class="wiki-entry">
+                            <summary class="wiki-entry-summary">Overrun and melt rate</summary>
+                            <div class="wiki-entry-body">
+                                <p>High-overrun products melt faster because air provides less thermal insulation than a dense mix. Premium gelato, with its low overrun and dense structure, melts more slowly — which is partly why gelato is served at a higher temperature (−10 to −12 °C vs −18 °C for hardened ice cream).</p>
+                            </div>
+                        </details>
+
+                    </div>
+                </section>
+
+            </div><!-- /wiki-content -->
+        </div><!-- /wiki-layout -->
+
+    </main>
+
+</body>
+</html>

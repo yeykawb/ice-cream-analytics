@@ -70,7 +70,7 @@ function rtfToPlain(rtf) {
     return text.replace(/\n{3,}/g, '\n\n').trim();
 }
 
-export function parseRCX(batchId, xmlText) {
+export function parseRCX(batchId, xmlText, date = null) {
     const doc  = new DOMParser().parseFromString(xmlText, 'text/xml');
     const root = doc.documentElement; // <Recipe>
 
@@ -88,7 +88,8 @@ export function parseRCX(batchId, xmlText) {
         .replace(/[^a-z0-9]+/g, '_')
         .replace(/^_|_$/g, '');
     const version = dcNum('Revision') || 1;
-    const date    = dcTxt('CreatedDate');
+    // date comes from the filename (B001-YYYY-MM-DD-description.rcx); fall back to XML field
+    if (!date) date = dcTxt('CreatedDate');
 
     // ── Tags ───────────────────────────────────────────
     const tagsEl = dc('Tags');
